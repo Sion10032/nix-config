@@ -9,25 +9,34 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: let
+    commonModules = [
+      ./nix-settings.nix
+      ./modules/core.nix
+
+      # home-manager
+      home-manager.nixosModules.home-manager
+      ./modules/home-manager
+    ];
+    user = "sion";
+  in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs; inherit user; };
       system = "x86_64-linux";
-      modules = [
-        ./nix-settings.nix
+      modules = commonModules ++ [
         ./users.nix
         ./hosts/nixos
 
-        # home-manager
-        home-manager.nixosModules.home-manager
-	./home-manager/core.nix
-        ({ ... }: {
-          home-manager.users = {
-            sion = import ./home-manager/sion;
-          };
-          # Optionally, use home-manager.extraSpecialArgs to pass
-          # arguments to home.nix
-        })
+        # Optionally, use home-manager.extraSpecialArgs to pass
+        # arguments to home.nix
+      ] ++ map (m: (import m user)) [
+        ./modules/home-manager/user.nix
+        ./modules/fonts.nix
+        ./modules/desktop/ly.nix
+        ./modules/desktop/i3
+        ./modules/gui/browser
+        ./modules/gui/media
+        ./modules/gui/terminal
       ];
     };
   };

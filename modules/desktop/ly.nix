@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+user: { pkgs, config, ... }: {
   services.displayManager.ly = {
     enable = true;
   };

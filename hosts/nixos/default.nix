@@ -5,15 +5,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-
-      ../../modules/core.nix
-
-      # use ly as dm and i3 as wm
-      ../../modules/desktop/ly.nix
-      ../../modules/desktop/i3.nix
-      # ../../modules/desktop/xrdp.nix
-
-      # ../../modules/gui/alacritty.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -42,13 +33,6 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-
-
-  # enable network function for thunar
-  services.gvfs = {
-    enable = true;
-    package = pkgs.gvfs;
-  };  
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -119,6 +103,5 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }
 
