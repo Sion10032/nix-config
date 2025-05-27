@@ -2,9 +2,9 @@
   description = "Sion10032's NixOS flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -32,11 +32,16 @@
       ] ++ map (m: (import m user)) [
         ./modules/home-manager/user.nix
         ./modules/fonts.nix
-        ./modules/desktop/ly.nix
-        ./modules/desktop/i3
+        
+        ./modules/cli/file
+        
         ./modules/gui/browser
+        ./modules/gui/file
         ./modules/gui/media
         ./modules/gui/terminal
+
+        ./modules/desktop/ly.nix
+        ./modules/desktop/i3
       ];
     };
   };

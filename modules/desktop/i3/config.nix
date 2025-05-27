@@ -103,7 +103,7 @@ in {
 
       fonts = {
         names = [
-          "Maple Mono SC NF"
+          "Maple Mono Normal NF CN"
           # "Noto Sans Mono CJK SC"
         ];
         size = 10.0;

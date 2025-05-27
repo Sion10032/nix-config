@@ -1,21 +1,13 @@
-{ pkgs, ... }: {
-  imports = [
-    ./termscp
-  ];
-  
-  home.packages = with pkgs; [
-    xfce.thunar
-    # gvfs
-  ];
-
+user: { pkgs, ... }: {  
   # enable network function for thunar
-  #config.services.gvfs = {
-  #  enable = true;
-  #  package = pkgs.gvfs;
-  #};
-
-  programs.yazi = {
+  services.gvfs = {
     enable = true;
-    enableFishIntegration = true;
+    package = pkgs.gvfs;
+  };
+
+  home-manager.users.${user} = { pkgs, ... }: {
+    home.packages = with pkgs; [
+      xfce.thunar
+    ];
   };
 }
