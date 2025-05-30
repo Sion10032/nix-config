@@ -106,7 +106,7 @@ in {
           "Maple Mono Normal NF CN"
           # "Noto Sans Mono CJK SC"
         ];
-        size = 10.0;
+        size = 12.0;
       };
       mode = "dock";
       hiddenState = "hide";

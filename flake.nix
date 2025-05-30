@@ -40,8 +40,11 @@
         ./modules/gui/media
         ./modules/gui/terminal
 
-        ./modules/desktop/ly.nix
+        # ./modules/desktop/ly.nix
+        ./modules/desktop/regreet.nix
         ./modules/desktop/i3
+        ./modules/desktop/hyprland
+        ./modules/desktop/xrdp.nix
       ];
     };
   };
