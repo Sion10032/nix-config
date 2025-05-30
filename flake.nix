@@ -16,7 +16,7 @@
 
       # home-manager
       home-manager.nixosModules.home-manager
-      ./modules/home-manager
+      ./modules/common/home-manager
     ];
     user = "sion";
   in {
@@ -30,21 +30,22 @@
         # Optionally, use home-manager.extraSpecialArgs to pass
         # arguments to home.nix
       ] ++ map (m: (import m user)) [
-        ./modules/home-manager/user.nix
+        ./modules/common/home-manager/user.nix
         ./modules/fonts.nix
         
-        ./modules/cli/file
+        ./modules/common/cli/file
         
-        ./modules/gui/browser
-        ./modules/gui/file
-        ./modules/gui/media
-        ./modules/gui/terminal
+        ./modules/common/gui/browser
+        ./modules/common/gui/media
+        ./modules/common/gui/terminal
+        
+        ./modules/linux/gui/file
 
-        # ./modules/desktop/ly.nix
-        ./modules/desktop/regreet.nix
-        ./modules/desktop/i3
-        ./modules/desktop/hyprland
-        ./modules/desktop/xrdp.nix
+        # ./modules/linux/desktop/ly.nix
+        ./modules/linux/desktop/regreet.nix
+        ./modules/linux/desktop/i3
+        ./modules/linux/desktop/hyprland
+        ./modules/linux/desktop/xrdp.nix
       ];
     };
   };
