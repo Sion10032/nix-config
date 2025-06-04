@@ -1,6 +1,9 @@
 user: { ... }: {
   imports = [
     ../x.nix
+  ] ++ map (m: (import m user)) [
+    ../dunst
+    ../rofi
   ];
 
   services.xserver.windowManager.i3 = {
@@ -31,8 +34,6 @@ user: { ... }: {
     };
 
     home.packages = with pkgs; [
-      rofi # application launcher, the same as dmenu
-      dunst # notification daemon
       i3lock # default i3 screen locker
       xautolock # lock screen after some time
 
