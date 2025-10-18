@@ -1,4 +1,4 @@
-user: { pkgs, config, ... }: {
+{ config, pkgs, ... }: {
   programs.regreet = {
     enable = true;
   };

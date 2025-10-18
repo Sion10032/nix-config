@@ -1,13 +1,15 @@
-user: { ... }: {
-  home-manager.users.${user} = { pkgs, ... }: {
-    programs.chromium = {
-      enable = true;
-      package = pkgs.ungoogled-chromium;
-    };
+{ ... }: {
+  home-manager.sharedModules = [
+    ({ pkgs, ... }: {
+      programs.chromium = {
+        enable = true;
+        package = pkgs.ungoogled-chromium;
+      };
 
-    programs.floorp = {
-      enable = true;
-      languagePacks = [ "zh-CN" "en-US" ];
-    };
-  };
+      programs.librewolf = {
+        enable = true;
+        languagePacks = [ "zh-CN" "en-US" ];
+      };
+    })
+  ];
 }

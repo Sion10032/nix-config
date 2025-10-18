@@ -1,7 +1,19 @@
-user: { ... }: {
-  home-manager.users.${user} = { config, pkgs, ... }@inputs: {
-    services.dunst = {
-      enable = true;
+{ config, lib, ... }: let 
+  cfg = config.kana.programs.dunst;
+in {
+  options = {
+    kana.programs.dunst = {
+      enable = lib.mkEnableOption "dunst";
     };
+  };
+
+  config = lib.mkIf cfg.enable {
+    home-manager.sharedModules = [
+      ({ config, pkgs, ... }@inputs: {
+        services.dunst = {
+          enable = true;
+        };
+      })
+    ];
   };
 }

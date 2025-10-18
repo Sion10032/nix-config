@@ -1,10 +1,11 @@
-user: { ... }: {
-  imports = [
-  ] ++ map (m: (import m user)) [
-    ../dunst
-    ../eww
-    ../rofi
-  ];
+{ ... }: {
+  imports = [];
+
+  kana.programs = {
+    rofi.enable = true;
+    dunst.enable = true;
+    eww.enable = true;
+  };
 
   programs.hyprland = {
     enable = true;
@@ -12,7 +13,7 @@ user: { ... }: {
 
   # todo use uwsm https://wiki.hyprland.org/Useful-Utilities/Systemd-start/
 
-  home-manager.users.${user} = { config, pkgs, ... }@inputs: {
+  home-manager.sharedModules = [ ({ config, pkgs, ... }@inputs: {
     wayland.windowManager.hyprland.enable = true;
     wayland.windowManager.hyprland.settings = {
       # https://github.com/hyprwm/Hyprland/blob/main/example/hyprland.conf
@@ -118,5 +119,5 @@ user: { ... }: {
         # ];
       };
     };
-  };
+  }) ];
 }

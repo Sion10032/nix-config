@@ -1,4 +1,4 @@
-user: { config, lib, ... }: let
+{ config, lib, ... }: let
   defaultSession = config.services.displayManager.defaultSession;
 in {
   services.xrdp = {

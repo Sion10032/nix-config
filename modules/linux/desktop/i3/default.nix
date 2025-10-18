@@ -1,10 +1,9 @@
-user: { ... }: {
-  imports = [
-    ../x.nix
-  ] ++ map (m: (import m user)) [
-    ../dunst
-    ../rofi
-  ];
+{ ... }: {
+  kana.programs = {
+    rofi.enable = true;
+    dunst.enable = true;
+    eww.enable = true;
+  };
 
   services.xserver.windowManager.i3 = {
     enable = true;
@@ -12,7 +11,7 @@ user: { ... }: {
   };
   services.displayManager.defaultSession = "none+i3";
   
-  home-manager.users.${user} = { config, pkgs, ... }@inputs: {
+  home-manager.sharedModules = [ ({ config, pkgs, ... }@inputs: {
     imports = [
       # ./picom.nix
     ];
@@ -41,5 +40,5 @@ user: { ... }: {
       # i3blocks # status bar
       # i3status-rust # provide information to i3bar
     ];
-  };
+  }) ];
 }

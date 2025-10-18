@@ -1,7 +1,7 @@
 { ... }: {
   home-manager.sharedModules = [
-    ({ ... }: {
-      programs.mpv = {
+    ({ pkgs, ... }: {
+      programs.vscode = {
         enable = true;
       };
     })

@@ -1,10 +1,20 @@
-user: { ... }: {
-  home-manager.users.${user} = { config, lib, pkgs, ... }@inputs: {
-    programs.rofi = {
-      enable = true;
-      # need a better way to define module, cause now if package is set, i will get
-      # 'The option `programs.rofi.package' is defined multiple times while it's expected to be unique'.
-      # package = pkgs.rofi-wayland;
+{ config, lib, ... }: let 
+  cfg = config.kana.programs.rofi;
+in {
+  options = {
+    kana.programs.rofi = {
+      enable = lib.mkEnableOption "rofi";
     };
+  };
+
+  config = lib.mkIf cfg.enable {
+    home-manager.sharedModules = [
+      ({ pkgs, ... }@inputs: {
+        programs.rofi = {
+          enable = true;
+          package = pkgs.rofi-wayland;
+        };
+      })
+    ];
   };
 }

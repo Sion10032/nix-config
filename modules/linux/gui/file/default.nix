@@ -1,13 +1,15 @@
-user: { pkgs, ... }: {  
+{ pkgs, ... }: {  
   # enable network function for thunar
   services.gvfs = {
     enable = true;
     package = pkgs.gvfs;
   };
 
-  home-manager.users.${user} = { pkgs, ... }: {
-    home.packages = with pkgs; [
-      xfce.thunar
-    ];
-  };
+  home-manager.sharedModules = [
+    ({ pkgs, ... }: {
+      home.packages = with pkgs; [
+        xfce.thunar
+      ];
+    })
+  ];
 }
