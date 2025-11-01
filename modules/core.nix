@@ -32,7 +32,7 @@
   ];
 
   # Run unpatched dynamic binaries on NixOS.
-  programs.nix-ld.enable = true;
+  # programs.nix-ld.enable = true;
 
   programs.fish.enable = true;
   # programs.nushell.enable = true;

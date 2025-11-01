@@ -7,9 +7,15 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: let
+  outputs = { self, nixpkgs, home-manager, nix-darwin, ... }@inputs: let
     commonModules = [
       ./nix-settings.nix
       ./modules/core.nix
@@ -42,6 +48,29 @@
         ./modules/linux/desktop
 
         ./modules/linux/gui/file
+      ] ++ [
+        (import ./modules/common/home-manager/user.nix user)
+      ];
+    };
+    darwinConfigurations."iris" = nix-darwin.lib.darwinSystem {
+      specialArgs = { inherit inputs; inherit user; };
+      modules = [
+        ./nix-settings.nix
+        ./modules/core.nix
+        
+        # home-manager
+        home-manager.darwinModules.home-manager
+        ./modules/common/home-manager
+      ] ++ [ 
+        ./hosts/iris
+        ({ config, lib, pkgs, ... }: {
+          users.users.sion = {
+            shell = pkgs.fish;
+            home = "/Users/sion";
+          };
+        })
+
+        ./modules/common/cli/file
       ] ++ [
         (import ./modules/common/home-manager/user.nix user)
       ];
