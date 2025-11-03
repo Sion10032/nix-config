@@ -20,8 +20,6 @@
       ./nix-settings.nix
       ./modules/core.nix
 
-      # home-manager
-      home-manager.nixosModules.home-manager
       ./modules/common/home-manager
     ];
     user = "sion";
@@ -36,6 +34,7 @@
         ./users.nix
 
         ./modules/linux/core.nix
+        home-manager.nixosModules.home-manager
       ] ++ [
         ./modules/fonts.nix
         ./modules/common/cli/file
@@ -60,6 +59,8 @@
         ./hosts/iris
         ./users.nix
 
+        home-manager.darwinModules.home-manager
+      ] ++ [
         ./modules/common/cli/file
 
         ./modules/common/gui/media
