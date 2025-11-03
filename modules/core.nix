@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -30,9 +30,6 @@
     nnn
     # termscp
   ];
-
-  # Run unpatched dynamic binaries on NixOS.
-  # programs.nix-ld.enable = true;
 
   programs.fish.enable = true;
   # programs.nushell.enable = true;

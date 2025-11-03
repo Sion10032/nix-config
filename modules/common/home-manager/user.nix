@@ -1,11 +1,10 @@
 user: { ... }: {
-  home-manager.users.${user} = { pkgs, ... }: {
+  home-manager.users.${user} = { pkgs, lib, ... }: {
     home.username = user;
-    # home.homeDirectory = "/home/${user}";
 
-    targets.darwin.linkApps.enable = false;
-    targets.darwin.copyApps = {
-      enable = pkgs.stdenv.hostPlatform.isDarwin;
+    targets.darwin = lib.mkIf pkgs.stdenv.isDarwin {
+      linkApps.enable = false;
+      copyApps.enable = true;
     };
   };
 }

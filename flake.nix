@@ -34,6 +34,8 @@
       modules = commonModules ++ [
         ./hosts/nixos-vm
         ./users.nix
+
+        ./modules/linux/core.nix
       ] ++ [
         ./modules/fonts.nix
         ./modules/common/cli/file
@@ -54,21 +56,9 @@
     };
     darwinConfigurations."iris" = nix-darwin.lib.darwinSystem {
       specialArgs = { inherit inputs; inherit user; };
-      modules = [
-        ./nix-settings.nix
-        ./modules/core.nix
-        
-        # home-manager
-        home-manager.darwinModules.home-manager
-        ./modules/common/home-manager
-      ] ++ [ 
+      modules = commonModules ++ [ 
         ./hosts/iris
-        ({ config, lib, pkgs, ... }: {
-          users.users.sion = {
-            shell = pkgs.fish;
-            home = "/Users/sion";
-          };
-        })
+        ./users.nix
 
         ./modules/common/cli/file
 
