@@ -5,7 +5,7 @@
   };
   darwinConfigs = {
   };
-  getHomePath = user: if pkgs.stdenv.isDarwin then "/Users${user}" else "/home/${user}";
+  getHomePath = user: if pkgs.stdenv.isDarwin then "/Users/${user}" else "/home/${user}";
 in {
   users.users.sion = lib.mergeAttrsList [
     ({
