@@ -1,5 +1,7 @@
 {
   description = "Sion10032's NixOS flake";
+  # How to inspect:
+  # https://nixos-and-flakes.thiscute.world/zh/best-practices/debugging#%E9%80%9A%E8%BF%87-nix-repl-%E6%9F%A5%E7%9C%8B%E6%BA%90%E7%A0%81%E3%80%81%E8%B0%83%E8%AF%95%E9%85%8D%E7%BD%AE
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -19,55 +21,62 @@
     commonModules = [
       ./nix-settings.nix
       ./modules/core.nix
-
-      ./modules/common/home-manager
+      ./users.nix
     ];
-    user = "sion";
+    nixosHomeManagerModules = [
+      home-manager.nixosModules.home-manager
+      ./modules/common/home-manager
+      ./modules/common/home-manager/users.nix
+    ];
+    darwinHomeManagerModules = [
+      home-manager.darwinModules.home-manager
+      ./modules/common/home-manager
+      ./modules/common/home-manager/users.nix
+    ];
+    users = [ "sion" ];
   in {
     nixosConfigurations."nixos-vm" = nixpkgs.lib.nixosSystem {
       # Optionally, use home-manager.extraSpecialArgs to pass
       # arguments to home.nix
-      specialArgs = { inherit inputs; inherit user; };
+      specialArgs = { inherit inputs; inherit users; };
       system = "x86_64-linux";
-      modules = commonModules ++ [
-        ./hosts/nixos-vm
-        ./users.nix
+      modules = 
+        commonModules 
+        ++ nixosHomeManagerModules 
+        ++ [
+          ./hosts/nixos-vm
+          ./modules/linux/core.nix
+        ]
+        ++ [
+          ./modules/fonts.nix
+          ./modules/common/cli/file
 
-        ./modules/linux/core.nix
-        home-manager.nixosModules.home-manager
-      ] ++ [
-        ./modules/fonts.nix
-        ./modules/common/cli/file
+          ./modules/common/gui/browser
+          ./modules/common/gui/dev
+          ./modules/common/gui/file
+          ./modules/common/gui/media
+          ./modules/common/gui/terminal
 
-        ./modules/common/gui/browser
-        ./modules/common/gui/dev
-        ./modules/common/gui/file
-        ./modules/common/gui/media
-        ./modules/common/gui/terminal
+          ./modules/linux/hardware
+          ./modules/linux/desktop
 
-        ./modules/linux/hardware
-        ./modules/linux/desktop
-
-        ./modules/linux/gui/file
-      ] ++ [
-        (import ./modules/common/home-manager/user.nix user)
-      ];
+          ./modules/linux/gui/file
+        ];
     };
     darwinConfigurations."iris" = nix-darwin.lib.darwinSystem {
-      specialArgs = { inherit inputs; inherit user; };
-      modules = commonModules ++ [ 
-        ./hosts/iris
-        ./users.nix
+      specialArgs = { inherit inputs; inherit users; };
+      modules = 
+        commonModules
+        ++ darwinHomeManagerModules
+        ++ [ 
+          ./hosts/iris
+        ]
+        ++ [
+          ./modules/common/cli/file
 
-        home-manager.darwinModules.home-manager
-      ] ++ [
-        ./modules/common/cli/file
-
-        ./modules/common/gui/media
-        ./modules/common/gui/terminal
-      ] ++ [
-        (import ./modules/common/home-manager/user.nix user)
-      ];
+          ./modules/common/gui/media
+          ./modules/common/gui/terminal
+        ];
     };
   };
 }
