@@ -1,10 +1,15 @@
 { ... }: {
   home-manager.sharedModules = [
     ({ ... }: {
-      # programs.alacritty.enable = true;
-      programs.kitty = {
+      programs.rio = {
         enable = true;
-        shellIntegration.enableFishIntegration = true;
+        # https://rioterm.com/docs/config
+        settings = {
+          fonts = {
+            size = 16;
+            family = "Maple Mono Normal NF CN";
+          };
+        };
       };
     })
   ];
