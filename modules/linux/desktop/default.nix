@@ -5,10 +5,11 @@
     ./rofi
     ./dunst
     ./eww
+    ./ashell
 
     ./hyprland
 
-    ./x.nix
-    ./i3
+    # ./x.nix
+    # ./i3
   ];
 }

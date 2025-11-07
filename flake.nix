@@ -34,11 +34,19 @@
       ./modules/common/home-manager/users.nix
     ];
     users = [ "sion" ];
+    defaultApps = {
+
+    };
+    kanaFlakeRoot = ./.;
   in {
     nixosConfigurations."nixos-vm" = nixpkgs.lib.nixosSystem {
       # Optionally, use home-manager.extraSpecialArgs to pass
       # arguments to home.nix
-      specialArgs = { inherit inputs; inherit users; };
+      specialArgs = {
+        inherit inputs;
+        inherit users;
+        inherit kanaFlakeRoot;
+      };
       system = "x86_64-linux";
       modules = 
         commonModules 

@@ -4,8 +4,8 @@
   kana.programs = {
     rofi.enable = true;
     dunst.enable = true;
-    eww.enable = true;
-    # ashell.enable = true;
+    # eww.enable = true;
+    ashell.enable = true;
   };
 
   programs.hyprland = {
@@ -21,17 +21,18 @@
     services.hyprpaper = {
       enable = true;
       settings = {
-        # ipc = "on";
+        ipc = "on";
         # splash = false;
         # splash_offset = 2.0;
 
-        # preload =
-        #   [ "/share/wallpapers/buttons.png" "/share/wallpapers/cat_pacman.png" ];
+        preload = [
+          "${kanaFlakeRoot}/assets/wallpaper.png"
+        ];
 
-        # wallpaper = [
-        #   "DP-3,/share/wallpapers/buttons.png"
-        #   "DP-1,/share/wallpapers/cat_pacman.png"
-        # ];
+        wallpaper = [
+          ",${kanaFlakeRoot}/assets/wallpaper.png"
+          # "DP-1,/share/wallpapers/cat_pacman.png"
+        ];
       };
     };
   }) ];
