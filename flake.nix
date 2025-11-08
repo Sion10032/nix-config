@@ -59,6 +59,7 @@
           ./modules/fonts.nix
 
           ./modules/common/cli/file
+          ./modules/common/cli/hardware
 
           ./modules/common/gui/browser
           ./modules/common/gui/dev
