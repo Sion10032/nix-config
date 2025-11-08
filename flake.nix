@@ -57,6 +57,7 @@
         ]
         ++ [
           ./modules/fonts.nix
+
           ./modules/common/cli/file
 
           ./modules/common/gui/browser
@@ -80,8 +81,12 @@
           ./hosts/iris
         ]
         ++ [
+          ./modules/fonts.nix
+
           ./modules/common/cli/file
 
+          ./modules/common/gui/browser
+          ./modules/common/gui/dev
           ./modules/common/gui/media
           ./modules/common/gui/terminal
         ];
