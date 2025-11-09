@@ -93,5 +93,20 @@
           ./modules/common/gui/terminal
         ];
     };
+    darwinConfigurations."ume" = nix-darwin.lib.darwinSystem {
+      specialArgs = { inherit inputs; inherit users; };
+      modules = 
+        commonModules
+        ++ darwinHomeManagerModules
+        ++ [ 
+          ./hosts/ume
+        ]
+        ++ [
+          ./modules/fonts.nix
+
+          ./modules/common/cli/file
+          ./modules/common/cli/hardware
+        ];
+    };
   };
 }
