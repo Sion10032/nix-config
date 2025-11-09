@@ -28,7 +28,8 @@
 
     # file manager
     nnn
-    # termscp
+    
+    fastfetch
   ];
 
   programs.fish.enable = true;
