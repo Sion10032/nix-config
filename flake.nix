@@ -15,13 +15,16 @@
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
+
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-darwin, ... }@inputs: let
+  outputs = { self, nixpkgs, home-manager, nix-darwin, vscode-server, ... }@inputs: let
     commonModules = [
       ./nix-settings.nix
       ./modules/core.nix
       ./modules/common/env.nix
+      ./modules/linux/network
       ./users.nix
     ];
     nixosHomeManagerModules = [
@@ -72,6 +75,42 @@
           ./modules/linux/desktop
 
           ./modules/linux/gui/file
+        ];
+    };
+    nixosConfigurations."nixos-vm-dev" = nixpkgs.lib.nixosSystem {
+      # Optionally, use home-manager.extraSpecialArgs to pass
+      # arguments to home.nix
+      specialArgs = {
+        inherit inputs;
+        inherit users;
+        inherit kanaFlakeRoot;
+      };
+      system = "x86_64-linux";
+      modules =
+        commonModules
+        ++ nixosHomeManagerModules
+        ++ [
+          ./hosts/nixos-vm-dev
+          ./modules/linux/core.nix
+        ]
+        ++ [
+          ./modules/fonts.nix
+
+          ./modules/common/cli/docker
+          ./modules/common/cli/file
+          ./modules/common/cli/hardware
+
+          vscode-server.nixosModules.default
+          ({ config, pkgs, ... }: {
+            services.vscode-server = {
+              enable = true;
+              enableFHS = true;
+              extraRuntimeDependencies = with pkgs; [
+                icu
+                # libgcc
+              ];
+            };
+          })
         ];
     };
     darwinConfigurations."iris" = nix-darwin.lib.darwinSystem {

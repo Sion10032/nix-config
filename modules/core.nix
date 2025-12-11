@@ -30,6 +30,8 @@
     nnn
     
     fastfetch
+
+    nil # Nix Language Server
   ];
 
   programs.fish.enable = true;
