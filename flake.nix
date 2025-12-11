@@ -21,6 +21,7 @@
     commonModules = [
       ./nix-settings.nix
       ./modules/core.nix
+      ./modules/common/env.nix
       ./users.nix
     ];
     nixosHomeManagerModules = [
