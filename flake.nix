@@ -16,10 +16,12 @@
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
 
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+
     vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-darwin, vscode-server, ... }@inputs: let
+  outputs = { self, nixpkgs, home-manager, nix-darwin, nixos-wsl, vscode-server, ... }@inputs: let
     commonModules = [
       ./nix-settings.nix
       ./modules/core.nix
@@ -111,6 +113,35 @@
               ];
             };
           })
+        ];
+    };
+    nixosConfigurations."nixos-wsl" = nixpkgs.lib.nixosSystem {
+      # Optionally, use home-manager.extraSpecialArgs to pass
+      # arguments to home.nix
+      specialArgs = {
+        inherit inputs;
+        inherit users;
+        inherit kanaFlakeRoot;
+      };
+      system = "x86_64-linux";
+      modules =
+        commonModules
+        ++ nixosHomeManagerModules
+        ++ [
+          nixos-wsl.nixosModules.default
+          {
+            wsl = {
+              enable = true;
+              defaultUser = "sion";
+            };
+          }
+          ./hosts/nixos-wsl
+          ./modules/linux/core.nix
+        ]
+        ++ [
+          ./modules/fonts.nix
+          ./modules/common/cli/file
+          ./modules/common/cli/media
         ];
     };
     darwinConfigurations."iris" = nix-darwin.lib.darwinSystem {

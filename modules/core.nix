@@ -7,12 +7,6 @@
     curl
     screen
 
-    git
-
-    # shell
-    fish
-    # nushell
-
     # net tools
     bind
 
@@ -36,4 +30,7 @@
 
   programs.fish.enable = true;
   # programs.nushell.enable = true;
+
+  programs.git.enable = true;
+  programs.lazygit.enable = true;
 }
