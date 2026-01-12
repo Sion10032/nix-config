@@ -25,6 +25,8 @@
     
     fastfetch
 
+    just
+
     nil # Nix Language Server
   ];
 

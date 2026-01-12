@@ -18,7 +18,10 @@
 
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
-    vscode-server.url = "github:nix-community/nixos-vscode-server";
+    vscode-server = {
+      url = "github:nix-community/nixos-vscode-server";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, nix-darwin, nixos-wsl, vscode-server, ... }@inputs: let
@@ -101,6 +104,8 @@
           ./modules/common/cli/docker
           ./modules/common/cli/file
           ./modules/common/cli/hardware
+
+          ./modules/common/cli/ai
 
           vscode-server.nixosModules.default
           ({ config, pkgs, ... }: {
