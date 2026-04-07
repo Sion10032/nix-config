@@ -29,7 +29,7 @@
       ./nix-settings.nix
       ./modules/core.nix
       ./modules/common/env.nix
-      ./modules/linux/network
+      ./modules/common/cli/shell
       ./users.nix
     ];
     nixosHomeManagerModules = [
