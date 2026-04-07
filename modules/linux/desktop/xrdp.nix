@@ -1,9 +1,8 @@
-{ config, lib, ... }: let
-  defaultSession = config.services.displayManager.defaultSession;
-in {
+defaultSession: { config, lib, ... }: {
   services.xrdp = {
     enable = true;
-    audio.enable = false;
-    defaultWindowManager = "i3";
+    audio.enable = true;
+    openFirewall = true;
+    defaultWindowManager = defaultSession;
   };
 }

@@ -44,6 +44,7 @@ in {
           };
         })
         ./modules/linux/core.nix
+        ./modules/linux/gui/core.nix
       ]
       ++ [
         ./modules/fonts.nix
@@ -85,6 +86,7 @@ in {
           };
         })
         ./modules/linux/core.nix
+        ./modules/linux/gui/core.nix
       ]
       ++ [
         ./modules/fonts.nix
@@ -106,6 +108,9 @@ in {
             ];
           };
         })
+      ] ++ [
+        ./modules/linux/desktop/kde.nix
+        (import ./modules/linux/desktop/xrdp.nix "startplasma-x11")
       ];
   };
   nixosConfigurations."nixos-wsl" = nixpkgs.lib.nixosSystem {
