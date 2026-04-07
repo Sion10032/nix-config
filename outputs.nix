@@ -35,7 +35,14 @@ in {
       commonModules 
       ++ nixosHomeManagerModules 
       ++ [
-        ./hosts/nixos-vm
+        (import ./hosts/nixos-pve-vm.nix {
+          hostName = "nixos-vm";
+          disks = {
+            efi.uuid = "123C-A103";
+            root.uuid = "d391dd2e-579a-4768-aa1e-effd0d49e671";
+            home.uuid = "a9c67982-104b-4f67-9152-9779f3fb45d8";
+          };
+        })
         ./modules/linux/core.nix
       ]
       ++ [
@@ -69,7 +76,14 @@ in {
       commonModules
       ++ nixosHomeManagerModules
       ++ [
-        ./hosts/nixos-vm-dev
+        (import ./hosts/nixos-pve-vm.nix {
+          hostName = "nixos-vm-dev";
+          disks = {
+            efi.uuid = "FDA9-6E51";
+            root.uuid = "d2e26f17-f215-4f50-a306-60ec97d88fb3";
+            home.uuid = "d25e156c-ca98-4b90-bf5a-a88b639617d9";
+          };
+        })
         ./modules/linux/core.nix
       ]
       ++ [
