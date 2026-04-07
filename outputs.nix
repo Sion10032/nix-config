@@ -93,7 +93,7 @@ in {
         ./modules/common/cli/file
         ./modules/common/cli/hardware
 
-        ./modules/common/cli/ai
+        ./modules/common/cli/ai/coding.nix
 
         vscode-server.nixosModules.default
         ({ config, pkgs, ... }: {
