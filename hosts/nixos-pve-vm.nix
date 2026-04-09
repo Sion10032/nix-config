@@ -63,6 +63,9 @@ vm: { config, lib, pkgs, modulesPath, ... }:
 
   services.qemuGuest.enable = true;
 
+  services.printing.enable = false; # 禁用打印支持
+  hardware.bluetooth.enable = false; # 禁用蓝牙支持
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
