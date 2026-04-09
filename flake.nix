@@ -5,18 +5,22 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager/master";
+    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
-
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+ 
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     vscode-server = {
       url = "github:nix-community/nixos-vscode-server";
