@@ -3,6 +3,7 @@
     ./nix-settings.nix
     ./modules/core.nix
     ./modules/common/env.nix
+    ./modules/common/git.nix
     ./modules/common/cli/shell
     ./users.nix
   ];
