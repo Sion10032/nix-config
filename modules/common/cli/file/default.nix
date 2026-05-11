@@ -2,7 +2,7 @@
   home-manager.sharedModules = [
     ({ pkgs, ... }: {
       home.packages = with pkgs; [
-        termscp
+        # termscp
       ];
 
       # xdg.configFile."termscp".source = config.lib.file.mkOutOfStoreSymlink ./config;

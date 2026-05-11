@@ -7,8 +7,9 @@
 
       home.packages = with pkgs;
         [
-          lm_sensors
           bmon
+        ] ++ lib.optionals pkgs.stdenv.isLinux [
+          lm_sensors
         ] ++ lib.optionals pkgs.stdenv.isDarwin [
           macpm
         ];
