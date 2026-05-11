@@ -178,6 +178,8 @@ in {
       ++ [
         ./modules/fonts.nix
 
+        ./modules/common/cli/ai/coding.nix
+
         ./modules/common/cli/file
         ./modules/common/cli/hardware
       ];
