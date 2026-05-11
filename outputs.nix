@@ -111,8 +111,11 @@ in {
           };
         })
       ] ++ [
-        ./modules/linux/desktop/kde.nix
-        (import ./modules/linux/desktop/xrdp.nix "startplasma-x11")
+        ./modules/linux/desktop/xfce4.nix
+        (import ./modules/linux/desktop/xrdp.nix "xfce4-session")
+
+        # ./modules/linux/desktop/kde.nix
+        # (import ./modules/linux/desktop/xrdp.nix "startplasma-x11")
       ];
   };
   nixosConfigurations."nixos-wsl" = nixpkgs.lib.nixosSystem {
