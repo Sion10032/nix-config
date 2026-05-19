@@ -221,7 +221,13 @@ in {
         ./modules/common/cli/file
         ./modules/common/cli/hardware
 
-        # ./modules/common/cli/ai
+        ./modules/common/cli/ai
+
+        ./modules/common/gui/browser
+        ./modules/common/gui/dev
+        ./modules/common/gui/file
+        ./modules/common/gui/media
+        ./modules/common/gui/terminal
 
         vscode-server.nixosModules.default
         ({ config, pkgs, ... }: {
