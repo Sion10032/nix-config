@@ -1,4 +1,13 @@
-{ self, nixpkgs, home-manager, nix-darwin, nixos-wsl, vscode-server, ... }@inputs: let
+{
+  self,
+  nixpkgs,
+  home-manager,
+  nix-darwin,
+  nixos-wsl,
+  nixos-hardware,
+  vscode-server,
+  ...
+}@inputs: let
   commonModules = [
     ./nix-settings.nix
     ./modules/core.nix
@@ -182,6 +191,53 @@ in {
 
         ./modules/common/cli/file
         ./modules/common/cli/hardware
+      ];
+  };
+  nixosConfigurations."akari" = nixpkgs.lib.nixosSystem {
+    # Optionally, use home-manager.extraSpecialArgs to pass
+    # arguments to home.nix
+    specialArgs = {
+      inherit inputs;
+      inherit users;
+    };
+    system = "x86_64-linux";
+    modules =
+      commonModules
+      ++ nixosHomeManagerModules
+      ++ [
+        ./hosts/akari
+        nixos-hardware.nixosModules.microsoft-surface-pro-9
+      ]
+      ++ [
+        ./modules/linux/core.nix
+        ./modules/linux/gui/core.nix
+      ]
+      ++ [
+        ./modules/fonts.nix
+
+        # ./modules/common/cli/docker
+        ./modules/common/cli/file
+        ./modules/common/cli/hardware
+
+        # ./modules/common/cli/ai/coding.nix
+
+        vscode-server.nixosModules.default
+        ({ config, pkgs, ... }: {
+          services.vscode-server = {
+            enable = true;
+            enableFHS = true;
+            nodejsPackage = pkgs.nodejs_22;
+            extraRuntimeDependencies = with pkgs; [
+              icu
+              # libgcc
+            ];
+          };
+        })
+      ] ++ [
+        ({ ... }: {
+          services.desktopManager.gnome.enable = true;
+          services.displayManager.gdm.enable = true;
+        })
       ];
   };
 }
