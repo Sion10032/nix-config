@@ -24,9 +24,9 @@
 
       "window.commandCenter" = false;
       "window.autoDetectColorScheme" = true;
-      "workbench.colorTheme" = "Default Dark+";
-      "workbench.preferredLightColorTheme" = "Default Light+";
-      "workbench.preferredDarkColorTheme" = "Default Dark+";
+      "workbench.colorTheme" = "Dark Modern";
+      "workbench.preferredLightColorTheme" = "Light Modern";
+      "workbench.preferredDarkColorTheme" = "Dark Modern";
     };
   };
 in {
