@@ -22,14 +22,32 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Shared nix-systems input used by flake-utils, nixvim, etc.
+    systems.url = "github:nix-systems/default/future-26.11";
+
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+    };
+    # niri = {
+    #   url = "github:sodiboo/niri-flake";
+    # };
+
+    # noctalia = {
+    #   url = "github:noctalia-dev/noctalia-shell";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
     vscode-server = {
       url = "github:nix-community/nixos-vscode-server";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.inputs.systems.follows = "systems";
     };
   };
 

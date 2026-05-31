@@ -15,6 +15,8 @@
     ./modules/common/git.nix
     ./modules/common/cli/shell
     ./users.nix
+
+    ./modules/common/cli/nixvim
   ];
   nixosHomeManagerModules = [
     home-manager.nixosModules.home-manager
