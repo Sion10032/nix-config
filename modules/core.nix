@@ -10,6 +10,8 @@
     curl
     screen
 
+    fresh-editor
+
     # net tools
     bind
 
