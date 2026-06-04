@@ -107,7 +107,7 @@ in {
         ./modules/common/cli/file
         ./modules/common/cli/hardware
 
-        ./modules/common/cli/ai/coding.nix
+        ./modules/common/cli/ai
 
         vscode-server.nixosModules.default
         ({ config, pkgs, ... }: {
@@ -189,7 +189,7 @@ in {
       ++ [
         ./modules/fonts.nix
 
-        ./modules/common/cli/ai/coding.nix
+        ./modules/common/cli/ai
 
         ./modules/common/cli/file
         ./modules/common/cli/hardware
@@ -221,7 +221,7 @@ in {
         ./modules/common/cli/file
         ./modules/common/cli/hardware
 
-        # ./modules/common/cli/ai/coding.nix
+        # ./modules/common/cli/ai
 
         vscode-server.nixosModules.default
         ({ config, pkgs, ... }: {
