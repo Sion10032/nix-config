@@ -34,6 +34,7 @@
 
     # Nix Language Server
     nixd
+    nil
   ];
 
   programs.fish.enable = true;
