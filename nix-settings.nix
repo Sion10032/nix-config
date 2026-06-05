@@ -8,6 +8,7 @@
       "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org/"
     ];
+    trusted-users = [ "root" "@wheel" ];
   };
   nixpkgs.config.allowUnfree = true;
 }
