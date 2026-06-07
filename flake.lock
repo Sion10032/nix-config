@@ -78,6 +78,23 @@
         "type": "github"
       }
     },
+    "homebrew": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1779646357,
+        "narHash": "sha256-rnnAaESXxItX4D9xCMGvs3hfDBjbbTYht7OluRcvT8k=",
+        "ref": "refs/tags/5.1.14",
+        "rev": "10a163ac127624caa80cc5cc5a705e97f3615b0e",
+        "revCount": 49750,
+        "type": "git",
+        "url": "https://mirrors.ustc.edu.cn/brew.git"
+      },
+      "original": {
+        "ref": "refs/tags/5.1.14",
+        "type": "git",
+        "url": "https://mirrors.ustc.edu.cn/brew.git"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -96,6 +113,26 @@
         "owner": "nix-darwin",
         "ref": "master",
         "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
+    "nix-homebrew": {
+      "inputs": {
+        "brew-src": [
+          "homebrew"
+        ]
+      },
+      "locked": {
+        "lastModified": 1780492467,
+        "narHash": "sha256-zMEJwtQPmsPPgPczFkyjWHgd1z0HagOPS2Wt2WDYLJY=",
+        "owner": "zhaofengli",
+        "repo": "nix-homebrew",
+        "rev": "562332f97de9f5ba51aa647d70462e88222b2988",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zhaofengli",
+        "repo": "nix-homebrew",
         "type": "github"
       }
     },
@@ -201,7 +238,9 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "homebrew": "homebrew",
         "nix-darwin": "nix-darwin",
+        "nix-homebrew": "nix-homebrew",
         "nixos-hardware": "nixos-hardware",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",

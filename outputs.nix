@@ -3,6 +3,7 @@
   nixpkgs,
   home-manager,
   nix-darwin,
+  nix-homebrew,
   nixos-wsl,
   nixos-hardware,
   vscode-server,
@@ -185,6 +186,8 @@ in {
       ++ darwinHomeManagerModules
       ++ [
         ./hosts/ume
+
+        nix-homebrew.darwinModules.nix-homebrew
       ]
       ++ [
         ./modules/fonts.nix
