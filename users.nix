@@ -11,6 +11,7 @@
       ({
         home = getHomePath user;
         shell = pkgs.fish;
+        ignoreShellProgramCheck = true;
       })
       (lib.optionalAttrs (pkgs.stdenv.isLinux) linuxConfigs)
       (lib.optionalAttrs (pkgs.stdenv.isDarwin) darwinConfigs)

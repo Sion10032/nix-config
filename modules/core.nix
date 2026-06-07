@@ -35,8 +35,9 @@
     # Nix Language Server
     nixd
     nil
-  ];
 
-  programs.fish.enable = true;
-  # programs.nushell.enable = true;
+    # shell
+    fish
+    nushell
+  ];
 }
