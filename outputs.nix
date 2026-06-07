@@ -43,9 +43,9 @@ in {
       inherit kanaFlakeRoot;
     };
     system = "x86_64-linux";
-    modules = 
-      commonModules 
-      ++ nixosHomeManagerModules 
+    modules =
+      commonModules
+      ++ nixosHomeManagerModules
       ++ [
         (import ./hosts/nixos-pve-vm.nix {
           hostName = "nixos-vm";
@@ -160,10 +160,10 @@ in {
   };
   darwinConfigurations."iris" = nix-darwin.lib.darwinSystem {
     specialArgs = { inherit inputs; inherit users; };
-    modules = 
+    modules =
       commonModules
       ++ darwinHomeManagerModules
-      ++ [ 
+      ++ [
         ./hosts/iris
       ]
       ++ [
@@ -180,10 +180,10 @@ in {
   };
   darwinConfigurations."ume" = nix-darwin.lib.darwinSystem {
     specialArgs = { inherit inputs; inherit users; };
-    modules = 
+    modules =
       commonModules
       ++ darwinHomeManagerModules
-      ++ [ 
+      ++ [
         ./hosts/ume
       ]
       ++ [
