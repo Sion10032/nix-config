@@ -6,7 +6,7 @@
       ];
       programs.nixvim = {
         enable = true;
-        version.enableNixpkgsReleaseCheck = false;
+        nixpkgs.source = inputs.nixpkgs;
 
         plugins.neo-tree = {
           enable = true;
