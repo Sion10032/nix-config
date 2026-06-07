@@ -193,6 +193,8 @@ in {
 
         ./modules/common/cli/file
         ./modules/common/cli/hardware
+
+        ./modules/darwin/homebrew.nix
       ];
   };
   nixosConfigurations."akari" = nixpkgs.lib.nixosSystem {
