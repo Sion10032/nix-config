@@ -10,12 +10,17 @@
       ./hardware-configuration.nix
     ];
 
+  environment.systemPackages = with pkgs; [
+    catppuccin-grub
+  ];
+
   boot.loader = {
     grub = {
       enable = true;
       device = "nodev"; # "nodev" is used for UEFI
       efiSupport = true;
       useOSProber = true;
+      theme = "${pkgs.catppuccin-grub}";
     };
     efi.canTouchEfiVariables = true;
   };
