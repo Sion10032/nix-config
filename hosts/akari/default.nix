@@ -15,6 +15,7 @@
       enable = true;
       device = "nodev"; # "nodev" is used for UEFI
       efiSupport = true;
+      useOSProber = true;
     };
     efi.canTouchEfiVariables = true;
   };
