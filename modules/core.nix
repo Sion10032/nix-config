@@ -39,4 +39,16 @@
 
   programs.fish.enable = true;
   # programs.nushell.enable = true;
+
+  home-manager.sharedModules = [
+    ({ ... }: {
+      programs.delta = {
+        enable = true;
+        enableGitIntegration = true;
+        # options = {
+        #   side-by-side = true;
+        # };
+      };
+    })
+  ];
 }
