@@ -5,9 +5,5 @@
 in {
   virtualisation.docker = {
     enable = true;
-
-    daemon.settings = {
-
-    };
   };
 } // lib.mergeAttrsList (lib.map getUserConfig users)

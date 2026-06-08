@@ -104,9 +104,10 @@ in {
       ++ [
         ./modules/fonts.nix
 
-        ./modules/common/cli/docker
         ./modules/common/cli/file
         ./modules/common/cli/hardware
+
+        ./modules/common/cli/virtualization/podman.nix
 
         ./modules/common/cli/ai
 
