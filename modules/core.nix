@@ -27,7 +27,7 @@
 
     # file manager
     nnn
-    
+
     fastfetch
 
     just
