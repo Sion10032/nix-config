@@ -81,16 +81,16 @@
     "homebrew": {
       "flake": false,
       "locked": {
-        "lastModified": 1779646357,
-        "narHash": "sha256-rnnAaESXxItX4D9xCMGvs3hfDBjbbTYht7OluRcvT8k=",
-        "ref": "refs/tags/5.1.14",
-        "rev": "10a163ac127624caa80cc5cc5a705e97f3615b0e",
-        "revCount": 49750,
+        "lastModified": 1782773693,
+        "narHash": "sha256-rnGj+lDW7xvxu2E5uWCWkN3ENmd45zL4dBnX1lGPmnA=",
+        "ref": "refs/tags/6.0.6",
+        "rev": "2b3683acbeac84c27669195235785694b72e253e",
+        "revCount": 50586,
         "type": "git",
         "url": "https://mirrors.ustc.edu.cn/brew.git"
       },
       "original": {
-        "ref": "refs/tags/5.1.14",
+        "ref": "refs/tags/6.0.6",
         "type": "git",
         "url": "https://mirrors.ustc.edu.cn/brew.git"
       }

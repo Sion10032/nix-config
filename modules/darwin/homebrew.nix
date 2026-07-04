@@ -1,6 +1,10 @@
 { ... }: {
   homebrew = {
     enable = true;
+    onActivation ={
+      cleanup = "zap";
+    };
+
     # enableZshIntegration = true;
     enableFishIntegration = true;
 
