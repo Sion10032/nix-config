@@ -8,6 +8,7 @@
       home.packages = with pkgs;
         [
           bmon
+          smartmontools
         ] ++ lib.optionals pkgs.stdenv.isLinux [
           lm_sensors
         ] ++ lib.optionals pkgs.stdenv.isDarwin [

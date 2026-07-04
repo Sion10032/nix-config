@@ -198,6 +198,8 @@ in {
         ./modules/common/cli/file
         ./modules/common/cli/hardware
 
+        ./modules/common/cli/virtualization/lima.nix
+
         ./modules/darwin/homebrew.nix
       ];
   };
