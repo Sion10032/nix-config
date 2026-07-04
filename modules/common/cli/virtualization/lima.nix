@@ -1,9 +1,5 @@
-{ ... }: {
-  home-manager.sharedModules = [
-    ({ pkgs, ... }: {
-      home.packages = with pkgs; [
-        lima
-      ];
-    })
+{ pkgs, ... }: {
+  environment.systemPackages = with pkgs; [
+    lima
   ];
 }
