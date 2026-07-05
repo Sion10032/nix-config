@@ -18,7 +18,7 @@
     ({ pkgs, ... }: {
       home.packages = with pkgs; [
         peazip
-        xfce.thunar
+        thunar
       ];
     })
   ];
