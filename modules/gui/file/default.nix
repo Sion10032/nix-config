@@ -1,9 +1,8 @@
-{ sLib, ... }:
+{ sLib, pkgs, ... }:
 {
   home-manager.sharedModules = [
     ({ pkgs, ... }: {
       home.packages = with pkgs; [
-        peazip
       ];
     })
   ];
@@ -18,6 +17,7 @@
   home-manager.sharedModules = [
     ({ pkgs, ... }: {
       home.packages = with pkgs; [
+        peazip
         xfce.thunar
       ];
     })
