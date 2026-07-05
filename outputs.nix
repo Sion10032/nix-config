@@ -9,7 +9,10 @@
   vscode-server,
   ...
 }@inputs: let
-  commonModules = [
+  users = [ "sion" ];
+  kanaFlakeRoot = ./.;
+
+  getCommonModules = system: [
     ./nix-settings.nix
     ./modules/core.nix
     ./modules/common/env.nix
@@ -17,37 +20,49 @@
     ./modules/common/cli/shell
     ./users.nix
 
+    nix-homebrew.darwinModules.nix-homebrew
+  ] ++ (
+    if system == "x86_64-linux" then [ home-manager.nixosModules.home-manager ] else []
+  ) ++ (
+    if system == "aarch64-darwin" then [ home-manager.darwinModules.home-manager ] else []
+  ) ++ [
+    ./modules/common/home-manager
+    ./modules/common/home-manager/users.nix
+
     ./modules/common/cli/nixvim
   ];
-  nixosHomeManagerModules = [
-    home-manager.nixosModules.home-manager
-    ./modules/common/home-manager
-    ./modules/common/home-manager/users.nix
-  ];
-  darwinHomeManagerModules = [
-    home-manager.darwinModules.home-manager
-    ./modules/common/home-manager
-    ./modules/common/home-manager/users.nix
-  ];
-  users = [ "sion" ];
-  defaultApps = {
-
-  };
-  kanaFlakeRoot = ./.;
-in {
-  nixosConfigurations."nixos-vm" = nixpkgs.lib.nixosSystem {
-    # Optionally, use home-manager.extraSpecialArgs to pass
-    # arguments to home.nix
+  mkNixos = {
+    system,
+    modules,
+    ...
+  }@attrs:
+  nixpkgs.lib.nixosSystem {
+    inherit system;
     specialArgs = {
       inherit inputs;
       inherit users;
       inherit kanaFlakeRoot;
     };
+    modules = (getCommonModules system) ++ modules;
+  };
+  mkDarwin = {
+    system,
+    modules,
+    ...
+  }@attrs:
+  nix-darwin.lib.darwinSystem {
+    inherit system;
+    specialArgs = {
+      inherit inputs;
+      inherit users;
+      inherit kanaFlakeRoot;
+    };
+    modules = (getCommonModules system) ++ modules;
+  };
+in {
+  nixosConfigurations."nixos-vm" = mkNixos {
     system = "x86_64-linux";
-    modules =
-      commonModules
-      ++ nixosHomeManagerModules
-      ++ [
+    modules = [
         (import ./hosts/nixos-pve-vm.nix {
           hostName = "nixos-vm";
           disks = {
@@ -77,19 +92,9 @@ in {
         ./modules/linux/gui/file
       ];
   };
-  nixosConfigurations."nixos-vm-dev" = nixpkgs.lib.nixosSystem {
-    # Optionally, use home-manager.extraSpecialArgs to pass
-    # arguments to home.nix
-    specialArgs = {
-      inherit inputs;
-      inherit users;
-      inherit kanaFlakeRoot;
-    };
+  nixosConfigurations."nixos-vm-dev" = mkNixos {
     system = "x86_64-linux";
-    modules =
-      commonModules
-      ++ nixosHomeManagerModules
-      ++ [
+    modules = [
         (import ./hosts/nixos-pve-vm.nix {
           hostName = "nixos-vm-dev";
           disks = {
@@ -131,19 +136,9 @@ in {
         # (import ./modules/linux/desktop/xrdp.nix "startplasma-x11")
       ];
   };
-  nixosConfigurations."nixos-wsl" = nixpkgs.lib.nixosSystem {
-    # Optionally, use home-manager.extraSpecialArgs to pass
-    # arguments to home.nix
-    specialArgs = {
-      inherit inputs;
-      inherit users;
-      inherit kanaFlakeRoot;
-    };
+  nixosConfigurations."nixos-wsl" = mkNixos {
     system = "x86_64-linux";
-    modules =
-      commonModules
-      ++ nixosHomeManagerModules
-      ++ [
+    modules = [
         nixos-wsl.nixosModules.default
         {
           wsl = {
@@ -160,12 +155,9 @@ in {
         ./modules/common/cli/media
       ];
   };
-  darwinConfigurations."iris" = nix-darwin.lib.darwinSystem {
-    specialArgs = { inherit inputs; inherit users; };
-    modules =
-      commonModules
-      ++ darwinHomeManagerModules
-      ++ [
+  darwinConfigurations."iris" = mkDarwin {
+    system = "aarch64-darwin";
+    modules = [
         ./hosts/iris
       ]
       ++ [
@@ -180,17 +172,14 @@ in {
         ./modules/common/gui/terminal
       ];
   };
-  darwinConfigurations."ume" = nix-darwin.lib.darwinSystem {
-    specialArgs = { inherit inputs; inherit users; };
-    modules =
-      commonModules
-      ++ darwinHomeManagerModules
-      ++ [
+  darwinConfigurations."ume" = mkDarwin {
+    system = "aarch64-darwin";
+    modules = [
         ./hosts/ume
-
-        nix-homebrew.darwinModules.nix-homebrew
       ]
       ++ [
+        ./modules/darwin/homebrew.nix
+
         ./modules/fonts.nix
 
         ./modules/common/cli/ai
@@ -199,22 +188,21 @@ in {
         ./modules/common/cli/hardware
 
         ./modules/common/cli/virtualization/lima.nix
+        
+        ./modules/common/gui/browser
 
-        ./modules/darwin/homebrew.nix
+        ({ ... }: {
+          launchd.daemons.nix-daemon.serviceConfig.EnvironmentVariables = {
+            HTTP_PROXY  = "http://192.168.2.251:8192";
+            HTTPS_PROXY = "http://192.168.2.251:8192";
+            ALL_PROXY   = "http://192.168.2.251:8192";
+          };
+        })
       ];
   };
-  nixosConfigurations."akari" = nixpkgs.lib.nixosSystem {
-    # Optionally, use home-manager.extraSpecialArgs to pass
-    # arguments to home.nix
-    specialArgs = {
-      inherit inputs;
-      inherit users;
-    };
+  nixosConfigurations."akari" = mkNixos {
     system = "x86_64-linux";
-    modules =
-      commonModules
-      ++ nixosHomeManagerModules
-      ++ [
+    modules = [
         ./hosts/akari
         nixos-hardware.nixosModules.microsoft-surface-pro-9
       ]
