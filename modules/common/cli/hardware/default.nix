@@ -1,4 +1,4 @@
-{ ... }: {
+{ sLib, ... }: {
   home-manager.sharedModules = [
     ({ pkgs, lib, ... }: {
       programs.bottom = {
@@ -9,9 +9,9 @@
         [
           bmon
           smartmontools
-        ] ++ lib.optionals pkgs.stdenv.isLinux [
+        ] ++ sLib.forLinux.list [
           lm_sensors
-        ] ++ lib.optionals pkgs.stdenv.isDarwin [
+        ] ++ sLib.forDarwin.list [
           macpm
         ];
     })

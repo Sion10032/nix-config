@@ -1,9 +1,10 @@
-{ lib, users, ... }: let
+{ lib, sLib, users, ... }: let
   getUserConfig = user: {
     home-manager.users.${user} = { pkgs, lib, ... }: {
       home.username = user;
-
-      targets.darwin = lib.mkIf pkgs.stdenv.isDarwin {
+    }
+    // sLib.forDarwin.attrs {
+      targets.darwin = {
         linkApps.enable = false;
         copyApps.enable = true;
       };

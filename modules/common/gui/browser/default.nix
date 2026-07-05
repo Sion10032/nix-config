@@ -1,15 +1,7 @@
-{ inputs, ... }: {
+{ sLib, ... }: {
   home-manager.sharedModules = [
-    ({ pkgs, lib, ... }: {
-      imports = [
-        inputs.zen-browser.homeModules.beta
-      ];
-
-      programs.chromium = lib.mkIf pkgs.stdenv.isLinux {
-        enable = true;
-        package = pkgs.ungoogled-chromium;
-      };
-
+    ({ pkgs, lib, ... }:
+    {
       programs.zen-browser = {
         enable = true;
         languagePacks = [ "zh-CN" "en-US" ];
@@ -24,6 +16,12 @@
           NoDefaultBookmarks = true;
           OfferToSaveLogins = false;
         };
+      };
+    }
+    // sLib.forLinux.attrs {
+      programs.chromium = {
+        enable = true;
+        package = pkgs.ungoogled-chromium;
       };
     })
   ];

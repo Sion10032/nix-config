@@ -6,11 +6,24 @@
   nix-homebrew,
   nixos-wsl,
   nixos-hardware,
+  nixvim,
+  zen-browser,
   vscode-server,
   ...
 }@inputs: let
+  lib = nixpkgs.lib;
+
+  sLib = import ./lib;
+
   users = [ "sion" ];
   kanaFlakeRoot = ./.;
+
+  homeModules = { ... }: {
+    imports = [
+      nixvim.homeModules.nixvim
+      zen-browser.homeModules.beta
+    ];
+  };
 
   getCommonModules = system: [
     ./nix-settings.nix
@@ -21,13 +34,20 @@
     ./users.nix
 
     nix-homebrew.darwinModules.nix-homebrew
-  ] ++ (
-    if system == "x86_64-linux" then [ home-manager.nixosModules.home-manager ] else []
-  ) ++ (
-    if system == "aarch64-darwin" then [ home-manager.darwinModules.home-manager ] else []
-  ) ++ [
+  ]
+  ++ lib.optionals (lib.hasSuffix "linux" system) [
+    home-manager.nixosModules.home-manager
+  ]
+  ++ lib.optionals (lib.hasSuffix "darwin" system) [
+    home-manager.darwinModules.home-manager
+  ]
+  ++ [
     ./modules/common/home-manager
     ./modules/common/home-manager/users.nix
+
+    ({ ... }: {
+      home-manager.sharedModules = [ homeModules ];
+    })
 
     ./modules/common/cli/nixvim
   ];
@@ -42,6 +62,9 @@
       inherit inputs;
       inherit users;
       inherit kanaFlakeRoot;
+    }
+    // {
+      sLib = (sLib { inherit system; inherit lib; });
     };
     modules = (getCommonModules system) ++ modules;
   };
@@ -56,6 +79,9 @@
       inherit inputs;
       inherit users;
       inherit kanaFlakeRoot;
+    }
+    // {
+      sLib = (sLib { inherit system; inherit lib; });
     };
     modules = (getCommonModules system) ++ modules;
   };

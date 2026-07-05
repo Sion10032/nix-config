@@ -1,20 +1,20 @@
-{ config, lib, pkgs, users, ... }: let
-  linuxConfigs = {
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+{ lib, sLib, pkgs, users, ... }: let
+  getLinuxConfigs = user: sLib.forLinux.attrs {
+    home = "/home/${user}";
+    extraGroups = [ "wheel" ]; # Enable 'sudo' for the user.
     isNormalUser = true;
   };
-  darwinConfigs = {
+  getDarwinConfigs = user: sLib.forDarwin.attrs {
+    home = "/Users/${user}";
   };
-  getHomePath = user: if pkgs.stdenv.isDarwin then "/Users/${user}" else "/home/${user}";
   getUserConfig = user: {
     users.users."${user}" = lib.mergeAttrsList [
       ({
-        home = getHomePath user;
         shell = pkgs.fish;
         ignoreShellProgramCheck = true;
       })
-      (lib.optionalAttrs (pkgs.stdenv.isLinux) linuxConfigs)
-      (lib.optionalAttrs (pkgs.stdenv.isDarwin) darwinConfigs)
+      (getLinuxConfigs user)
+      (getDarwinConfigs user)
     ];
   };
 in
