@@ -38,9 +38,18 @@
       "update.titleBar" = false;
       "chat.titleBar.signIn.enabled" = false;
 
+      "chat.agent.enabled" = false;
+
       "nix.enableLanguageServer" = true;
 
-      "chat.agent.enabled" = false;
+      "remote.SSH.experimental.chat" = false;
+      "remote.SSH.useLocalServer" = false;
+      "remote.SSH.remotePlatform" = {
+        "nixos-vm-dev" = "linux";
+        "windows-dev" = "windows";
+        "akari" = "linux";
+        "ume" = "macOS";
+      };
     };
   };
 in {

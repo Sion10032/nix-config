@@ -1,6 +1,6 @@
 { sLib, ... }: {
   home-manager.sharedModules = [
-    ({ pkgs, lib, ... }:
+    ({ config, pkgs, ... }:
     {
       programs.zen-browser = {
         enable = true;
@@ -16,6 +16,13 @@
           NoDefaultBookmarks = true;
           OfferToSaveLogins = false;
         };
+
+        profilesPath = "${config.xdg.dataHome}/zen-browser";
+        # profiles."sion" = {
+        #   id = 0;
+        #   name = "sion";
+        #   path = "sion";
+        # };
       };
     }
     // sLib.forLinux.attrs {
