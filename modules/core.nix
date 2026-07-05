@@ -39,6 +39,8 @@
     # shell
     fish
     nushell
+  ] ++ sLib.forLinux.list [
+    mesa
   ];
 
   home-manager.sharedModules = [
@@ -51,8 +53,4 @@
 // sLib.forLinux.attrs {
   # Run unpatched dynamic binaries on NixOS.
   programs.nix-ld.enable = true;
-  
-  environment.systemPackages = with pkgs; [
-    mesa
-  ];
 }
