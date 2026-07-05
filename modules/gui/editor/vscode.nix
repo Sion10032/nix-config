@@ -1,5 +1,7 @@
 { pkgs, ... }: let
   commonProfile = {
+    enableUpdateCheck = false;
+
     extensions = with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
 
@@ -20,13 +22,25 @@
 
       "files.autoGuessEncoding" =  true;
 
-      "terminal.integrated.enableImages" = true;
+      "terminal.integrated.fontSize" = 14;
+      "terminal.integrated.shellIntegration.showCommandGuide" = false;
+      # 目前版本vscode启用终端图像显示后，浅色模式下终端字体显示有问题，暂时禁用该功能
+      "terminal.integrated.enableImages" = false;
+      "terminal.integrated.fontLigatures.enabled" = true;
+      "terminal.integrated.defaultProfile.osx" = "fish";
 
       "window.commandCenter" = false;
       "window.autoDetectColorScheme" = true;
       "workbench.colorTheme" = "Dark Modern";
       "workbench.preferredLightColorTheme" = "Light Modern";
       "workbench.preferredDarkColorTheme" = "Dark Modern";
+
+      "update.titleBar" = false;
+      "chat.titleBar.signIn.enabled" = false;
+
+      "nix.enableLanguageServer" = true;
+
+      "chat.agent.enabled" = false;
     };
   };
 in {
