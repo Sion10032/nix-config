@@ -173,7 +173,10 @@ in {
       [
         ./hosts/iris
       ]
-      ++ commonGuiModules;
+      ++ commonGuiModules
+      ++ [
+        ./modules/gui/network/clash-verge-rev.nix
+      ];
   };
   darwinConfigurations."ume" = mkDarwin {
     system = "aarch64-darwin";
