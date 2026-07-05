@@ -1,4 +1,14 @@
-{ pkgs, ... }: {  
+{ sLib, ... }:
+{
+  home-manager.sharedModules = [
+    ({ pkgs, ... }: {
+      home.packages = with pkgs; [
+        peazip
+      ];
+    })
+  ];
+}
+// (sLib.forLinux.attrs {
   # enable network function for thunar
   services.gvfs = {
     enable = true;
@@ -12,4 +22,4 @@
       ];
     })
   ];
-}
+})

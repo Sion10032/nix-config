@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ sLib, pkgs, ... }: {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -46,5 +46,13 @@
       programs.fish.enable = true;
       programs.nushell.enable = true;
     })
+  ];
+}
+// sLib.forLinux.attrs {
+  # Run unpatched dynamic binaries on NixOS.
+  programs.nix-ld.enable = true;
+  
+  environment.systemPackages = with pkgs; [
+    mesa
   ];
 }

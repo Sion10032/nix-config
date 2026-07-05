@@ -11,6 +11,7 @@
           smartmontools
         ] ++ sLib.forLinux.list [
           lm_sensors
+          net-tools
         ] ++ sLib.forDarwin.list [
           macpm
         ];
