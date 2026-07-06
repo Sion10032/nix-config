@@ -1,6 +1,6 @@
 { ... }: {
   home-manager.sharedModules = [
-    ({ pkgs, config, ... }: {
+    ({ pkgs, ... }: {
       programs.pi-coding-agent = {
         enable = true;
 
@@ -17,10 +17,10 @@
           };
           theme = "terminal";
           packages = [
-            "npm:@dreki-gg/pi-ask-mode"
+            "npm:@sion10032/pi-modes"
             "npm:pi-lens"
             "npm:context-mode"
-            "npm:pi-web-access"
+            # "npm:pi-web-access"
             "npm:pi-markdown-preview"
             "npm:@narumitw/pi-goal"
             "npm:@juicesharp/rpiv-todo"
