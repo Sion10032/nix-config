@@ -179,6 +179,7 @@ in {
       ]
       ++ commonGuiModules
       ++ [
+        ./modules/gui/system
         ./modules/gui/network/clash-verge-rev.nix
       ];
   };

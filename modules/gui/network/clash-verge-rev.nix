@@ -1,4 +1,4 @@
-{ sLib, pkgs, ... }:
+{ sLib, ... }:
 (sLib.forLinux.attrs {
   programs.clash-verge = {
     enable = true;
