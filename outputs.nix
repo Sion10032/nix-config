@@ -74,6 +74,7 @@
   mkNixos = {
     system,
     modules,
+    specialArgs ? {},
     ...
   }@attrs:
   nixpkgs.lib.nixosSystem {
@@ -83,14 +84,16 @@
       inherit users;
       inherit kanaFlakeRoot;
     }
+    // specialArgs
     // {
       sLib = (sLib { inherit system; inherit lib; });
     };
     modules = (getCommonModules system) ++ modules;
-  };
+  } // attrs;
   mkDarwin = {
     system,
     modules,
+    specialArgs ? {},
     ...
   }@attrs:
   nix-darwin.lib.darwinSystem {
@@ -100,11 +103,12 @@
       inherit users;
       inherit kanaFlakeRoot;
     }
+    // specialArgs
     // {
       sLib = (sLib { inherit system; inherit lib; });
     };
     modules = (getCommonModules system) ++ modules;
-  };
+  } // attrs;
 in {
   nixosConfigurations."nixos-vm" = mkNixos {
     system = "x86_64-linux";
@@ -141,7 +145,7 @@ in {
       ]
       ++ commonGuiModules
       ++ [
-        ./modules/cli/virtualization/podman.nix
+        ./modules/cli/virtualization/docker.nix
       ] ++ [
         ./modules/gui/linux-desktop/xfce4.nix
         (import ./modules/gui/linux-desktop/xrdp.nix "xfce4-session")
