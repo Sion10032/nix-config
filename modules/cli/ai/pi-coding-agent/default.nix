@@ -21,7 +21,6 @@
             "npm:pi-lens"
             "npm:context-mode"
             # "npm:pi-web-access"
-            "npm:pi-markdown-preview"
             "npm:@narumitw/pi-goal"
             "npm:@juicesharp/rpiv-todo"
             "npm:pi-zentui"
@@ -39,6 +38,8 @@
           }
         }
       '';
+
+      home.file.".pi/pi-modes.json".source = ./pi-modes.json;
 
       # disable auto format for pi-lens
       home.file.".pi-lens/config.json".text = ''
