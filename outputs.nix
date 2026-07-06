@@ -89,7 +89,7 @@
       sLib = (sLib { inherit system; inherit lib; });
     };
     modules = (getCommonModules system) ++ modules;
-  } // attrs;
+  } // (removeAttrs attrs [ "system" "modules" "specialArgs" ]);
   mkDarwin = {
     system,
     modules,
@@ -108,7 +108,7 @@
       sLib = (sLib { inherit system; inherit lib; });
     };
     modules = (getCommonModules system) ++ modules;
-  } // attrs;
+  } // (removeAttrs attrs [ "system" "modules" "specialArgs" ]);
 in {
   nixosConfigurations."nixos-vm" = mkNixos {
     system = "x86_64-linux";
