@@ -6,8 +6,6 @@
   nix-homebrew,
   nixos-wsl,
   nixos-hardware,
-  nixvim,
-  zen-browser,
   vscode-server,
   ...
 }@inputs: let
@@ -18,12 +16,6 @@
   users = [ "sion" ];
   kanaFlakeRoot = ./.;
 
-  homeModules = { ... }: {
-    imports = [
-      nixvim.homeModules.nixvim
-      zen-browser.homeModules.beta
-    ];
-  };
   commonGuiModules = [
     ./modules/gui/core.nix
 
@@ -64,10 +56,6 @@
   ++ [
     ./modules/home-manager
     ./modules/home-manager/users.nix
-
-    ({ ... }: {
-      home-manager.sharedModules = [ homeModules ];
-    })
 
     ./modules/cli/nixvim
   ];

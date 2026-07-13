@@ -1,31 +1,10 @@
 { sLib, ... }: {
-  home-manager.sharedModules = [
-    ({ config, pkgs, ... }:
-    {
-      programs.zen-browser = {
-        enable = true;
-        languagePacks = [ "zh-CN" "en-US" ];
+  imports = [
+    ./zen-browser.nix
+  ];
 
-        policies = {
-          DisableAppUpdate = true;
-          DisableFeedbackCommands = true;
-          DisableFirefoxStudies = true;
-          DisablePocket = true;
-          DisableTelemetry = true;
-          DontCheckDefaultBrowser = true;
-          NoDefaultBookmarks = true;
-          OfferToSaveLogins = false;
-        };
-
-        profilesPath = "${config.xdg.dataHome}/zen-browser";
-        # profiles."sion" = {
-        #   id = 0;
-        #   name = "sion";
-        #   path = "sion";
-        # };
-      };
-    }
-    // sLib.forLinux.attrs {
+  home-manager.sharedModules = sLib.forLinux.list [
+    ({ pkgs, ... }: {
       programs.chromium = {
         enable = true;
         package = pkgs.ungoogled-chromium;
