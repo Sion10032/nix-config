@@ -3,10 +3,8 @@
   nixpkgs,
   home-manager,
   nix-darwin,
-  nix-homebrew,
   nixos-wsl,
   nixos-hardware,
-  vscode-server,
   ...
 }@inputs: let
   lib = nixpkgs.lib;
@@ -42,13 +40,11 @@
     ./modules/cli/shell
   ]
   ++ lib.optionals (lib.hasSuffix "linux" system) [
-    vscode-server.nixosModules.default
-    ./modules/cli/code-server-fix.nix
+    ./modules/services/vscode-server.nix
   
     home-manager.nixosModules.home-manager
   ]
   ++ lib.optionals (lib.hasSuffix "darwin" system) [
-    nix-homebrew.darwinModules.nix-homebrew
     ./modules/homebrew.nix
 
     home-manager.darwinModules.home-manager
@@ -133,7 +129,7 @@ in {
       ]
       ++ commonGuiModules
       ++ [
-        ./modules/cli/virtualization/docker.nix
+        ./modules/services/virtualization/docker.nix
       ] ++ [
         ./modules/gui/linux-desktop/xfce4.nix
         (import ./modules/gui/linux-desktop/xrdp.nix "xfce4-session")
