@@ -39,8 +39,6 @@
     # shell
     fish
     nushell
-  ] ++ sLib.forLinux.list [
-    mesa
   ];
 
   home-manager.sharedModules = [
