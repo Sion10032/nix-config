@@ -48,6 +48,7 @@
         "nixos-vm-dev" = "linux";
         "windows-dev" = "windows";
         "akari" = "linux";
+        "ally" = "linux";
         "ume" = "macOS";
       };
     };
