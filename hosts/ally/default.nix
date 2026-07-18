@@ -5,10 +5,7 @@
     ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.refind.enable = true;
-  boot.loader.grub.enable = false;
-  boot.loader.systemd-boot.enable = false;
-  # boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "ally"; # Define your hostname.
