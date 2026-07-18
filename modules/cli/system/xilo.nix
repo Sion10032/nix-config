@@ -2,7 +2,7 @@
   home-manager.sharedModules = [
     ({ pkgs, ... }: {
       home.packages = [
-       inputs.xilo.packages.${pkgs.system}.default
+       inputs.xilo.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
     })
   ];
