@@ -1,6 +1,6 @@
 { lib, sLib, users, ... }: let
   getUserConfig = user: {
-    home-manager.users.${user} = { pkgs, lib, ... }: {
+    home-manager.users.${user} = { ... }: {
       home.username = user;
     }
     // sLib.forDarwin.attrs {

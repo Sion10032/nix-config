@@ -55,7 +55,7 @@
   };
 in {
   home-manager.sharedModules = [
-    ({ pkgs, ... }: {
+    ({ ... }: {
       programs.vscode = {
         enable = true;
         profiles.default = commonProfile;
