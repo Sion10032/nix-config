@@ -35,9 +35,20 @@
     # Shared nix-systems input used by flake-utils, nixvim, etc.
     systems.url = "github:nix-systems/default/future-26.11";
 
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
+
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    xilo = {
+      url = "github:stubbedev/xilo";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
 
     nixvim = {
@@ -67,7 +78,7 @@
     vscode-server = {
       url = "github:nix-community/nixos-vscode-server";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.inputs.systems.follows = "systems";
+      inputs.flake-utils.follows = "flake-utils";
     };
   };
 

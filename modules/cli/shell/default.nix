@@ -1,6 +1,6 @@
 { ... }: {
   home-manager.sharedModules = [
-    ({ pkgs, ... }: {
+    ({ ... }: {
       programs.zellij = {
         enable = true;
         # enableFishIntegration = true;
