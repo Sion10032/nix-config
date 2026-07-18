@@ -66,6 +66,11 @@
       };
     };
 
+    jovian = {
+      url = "github:Jovian-Experiments/Jovian-NixOS";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # niri = {
     #   url = "github:sodiboo/niri-flake";
     # };

@@ -200,4 +200,18 @@ in {
         })
       ];
   };
+  nixosConfigurations."ally" = mkNixos {
+    system = "x86_64-linux";
+    modules =
+      [
+        ./hosts/ally
+        nixos-hardware.nixosModules.asus-ally-rc71l
+
+        ./modules/cli/system/xilo.nix
+      ]
+      ++ commonGuiModules
+      ++ [
+        ./modules/gui/linux-desktop/steamos.nix
+      ];
+  };
 }
