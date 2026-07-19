@@ -216,6 +216,7 @@ in {
         ./modules/services/ime.nix
 
         ./modules/gui/network/clash-verge-rev.nix
+        ./modules/gui/games
       ];
   };
 }
