@@ -212,6 +212,10 @@ in {
       ++ commonGuiModules
       ++ [
         ./modules/gui/linux-desktop/steamos.nix
+
+        ./modules/services/ime.nix
+
+        ./modules/gui/network/clash-verge-rev.nix
       ];
   };
 }
