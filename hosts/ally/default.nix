@@ -5,7 +5,13 @@
     ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    edk2-uefi-shell.enable = true;
+    extraFiles = {
+      "EFI/systemd/drivers/UsbXbox360Dxe-x64.efi" = ./UsbXbox360Dxe-x64.efi;
+    };
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "ally"; # Define your hostname.
