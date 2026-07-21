@@ -26,6 +26,12 @@ in
     ];
   };
 
+  system.userActivationScripts.linktosharedfolder.text = ''
+		if [[ ! -h "$HOME/.local/share/fonts" ]]; then
+		 ln -s "/run/current-system/sw/share/fonts" "$HOME/.local/share/fonts"
+		fi
+	'';
+
   home-manager.sharedModules = [
     ({ ... }: {
       fonts.fontconfig.enable = false;
