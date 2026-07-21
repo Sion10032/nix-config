@@ -18,6 +18,8 @@ in
     ];
 
     serif = [
+      "MiSans"
+      "Noto Sans CJK SC"
       "Noto Serif CJK SC"
     ];
 
