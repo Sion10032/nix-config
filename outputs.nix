@@ -54,6 +54,12 @@
     ./modules/home-manager/users.nix
 
     ./modules/cli/nixvim
+  ] ++ [
+    ({ ... }: {
+      nixpkgs.overlays = [
+        self.overlays.default
+      ];
+    })
   ];
   mkNixos = {
     system,
@@ -94,6 +100,8 @@
     modules = (getCommonModules system) ++ modules;
   } // (removeAttrs attrs [ "system" "modules" "specialArgs" ]);
 in {
+  overlays.default = import ./overlay.nix;
+
   nixosConfigurations."nixos-vm" = mkNixos {
     system = "x86_64-linux";
     modules =
