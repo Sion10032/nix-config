@@ -12,6 +12,20 @@
           };
         };
       };
+
+      programs.kitty = {
+        enable = true;
+
+        font = {
+          size = 12;
+          name = "Maple Mono Normal NF CN";
+        };
+
+        shellIntegration = {
+          enableFishIntegration = true;
+          enableBashIntegration = true;
+        };
+      };
     })
   ];
 }
