@@ -216,6 +216,7 @@ in {
         nixos-hardware.nixosModules.asus-ally-rc71l
 
         ./modules/cli/system/xilo.nix
+        ./modules/cli/music
       ]
       ++ commonGuiModules
       ++ [
