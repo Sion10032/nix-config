@@ -21,6 +21,8 @@
 
         schema_list:
           - schema: rime_ice
+
+        "menu/page_size": 9
       '';
     })
   ];
