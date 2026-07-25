@@ -22,7 +22,10 @@
         schema_list:
           - schema: rime_ice
 
-        "menu/page_size": 9
+        switcher/hotkeys:
+          - F4
+
+        menu/page_size: 9
       '';
     })
   ];
