@@ -40,6 +40,22 @@
 
     disable_ai = true;
   };
+
+  userKeymaps = [
+    {
+      context = "Terminal";
+      bindings = builtins.listToAttrs (
+        map (keys: { name = keys; value = [ "terminal::SendKeystroke" keys ]; }) [
+          "ctrl-h"
+          "ctrl-n"
+          "ctrl-p"
+          "ctrl-q"
+          "ctrl-s"
+          "ctrl-t"
+        ]
+      );
+    }
+  ];
 in {
   home-manager.sharedModules = [
     ({ ... }: {
@@ -56,6 +72,7 @@ in {
         ];
 
         inherit userSettings;
+        inherit userKeymaps;
       };
     })
   ];
