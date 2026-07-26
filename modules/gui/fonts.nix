@@ -8,9 +8,9 @@
 in
 {
   environment.systemPackages = fonts;
+  fonts.packages = fonts;
 }
 // sLib.forLinux.attrs {
-  fonts.packages = fonts;
   fonts.fontconfig.defaultFonts = {
     sansSerif = [
       "MiSans"
