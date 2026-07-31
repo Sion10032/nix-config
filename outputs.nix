@@ -21,7 +21,7 @@
 
     ./modules/gui/browser
     ./modules/gui/editor
-    ./modules/gui/file
+    ./modules/gui/file/peazip.nix
     ./modules/gui/media
     ./modules/gui/terminal
   ];
@@ -41,7 +41,7 @@
   ]
   ++ lib.optionals (lib.hasSuffix "linux" system) [
     ./modules/services/vscode-server.nix
-  
+
     home-manager.nixosModules.home-manager
   ]
   ++ lib.optionals (lib.hasSuffix "darwin" system) [
@@ -183,7 +183,7 @@ in {
       ]
       ++ [
         ./modules/cli/virtualization/lima.nix
-        
+
         # ({ ... }: {
         #   launchd.daemons.nix-daemon.serviceConfig.EnvironmentVariables = {
         #     HTTP_PROXY  = "http://192.168.2.251:8192";

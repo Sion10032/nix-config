@@ -1,14 +1,6 @@
-{ sLib, ... }: {
+{ ... }: {
   imports = [
+    ./chromium.nix
     ./zen-browser.nix
-  ];
-
-  home-manager.sharedModules = sLib.forLinux.list [
-    ({ pkgs, ... }: {
-      programs.chromium = {
-        enable = true;
-        package = pkgs.ungoogled-chromium;
-      };
-    })
   ];
 }
