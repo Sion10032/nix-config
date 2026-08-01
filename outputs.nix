@@ -22,6 +22,7 @@
     ./modules/gui/browser
     ./modules/gui/editor
     ./modules/gui/file/peazip.nix
+    ./modules/gui/file/motrix-next.nix
     ./modules/gui/media
     ./modules/gui/terminal
   ];
