@@ -1,5 +1,4 @@
-{ sLib, ... }:
-sLib.forLinux.attrs {
+{ sLib, ... }: sLib.forLinux.attrs {
   hardware.opentabletdriver = {
     enable = true;
   };

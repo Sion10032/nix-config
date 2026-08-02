@@ -1,17 +1,17 @@
 { sLib, ... }: {
   home-manager.sharedModules = [
-    ({ pkgs, lib, ... }: {
+    ({ pkgs, ... }: {
       programs.bottom = {
         enable = true;
       };
 
       home.packages = with pkgs;
         [
+          btop
           bmon
           smartmontools
         ] ++ sLib.forLinux.list [
           lm_sensors
-          net-tools
         ] ++ sLib.forDarwin.list [
           macpm
         ];

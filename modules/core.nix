@@ -17,16 +17,12 @@
 
     # system monitor
     htop
-    btop
 
     # archiver
     zip
     unzip
     unar
     p7zip
-
-    # file manager
-    nnn
 
     fastfetch
 
@@ -39,6 +35,8 @@
     # shell
     fish
     nushell
+  ] ++ sLib.forLinux.list [
+    net-tools
   ];
 
   home-manager.sharedModules = [

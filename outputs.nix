@@ -37,8 +37,8 @@
 
     ./modules/cli/ai
     ./modules/cli/file
-    ./modules/cli/hardware
     ./modules/cli/shell
+    ./modules/cli/system/monitor.nix
   ]
   ++ lib.optionals (lib.hasSuffix "linux" system) [
     ./modules/services/vscode-server.nix
@@ -118,9 +118,8 @@ in {
       ]
       ++ commonGuiModules
       ++ [
-        ./modules/hardware.nix
-
-        ./modules/linux-dektop
+        # ./modules/hardware.nix
+        # ./modules/linux-dektop
       ];
   };
   nixosConfigurations."nixos-vm-dev" = mkNixos {
