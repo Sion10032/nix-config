@@ -24,6 +24,7 @@
     ./modules/gui/file/peazip.nix
     ./modules/gui/file/motrix-next.nix
     ./modules/gui/media
+    ./modules/gui/network/freerdp.nix
     ./modules/gui/terminal
   ];
 
