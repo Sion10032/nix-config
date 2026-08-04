@@ -139,6 +139,8 @@ in {
       ++ commonGuiModules
       ++ [
         ./modules/services/virtualization/docker.nix
+
+        ./modules/services/zed-remote-server.nix
       ] ++ [
         ./modules/gui/linux-desktop/xfce4.nix
         (import ./modules/gui/linux-desktop/xrdp.nix "xfce4-session")
