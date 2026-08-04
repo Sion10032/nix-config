@@ -18,11 +18,11 @@
           theme = "terminal";
           packages = [
             "npm:@sion10032/pi-modes"
-            "npm:pi-lens"
+            # "npm:pi-lens"
             "npm:context-mode"
             "npm:pi-loop-police"
             "npm:pi-web-access"
-            "npm:@narumitw/pi-goal"
+            # "npm:@narumitw/pi-goal"
             "npm:@juicesharp/rpiv-todo"
             "npm:pi-zentui"
             "npm:pi-terminal-theme"
