@@ -32,9 +32,7 @@
     ./nix-settings.nix
     ./users.nix
 
-    ./modules/core.nix
-    ./modules/env.nix
-    ./modules/git.nix
+    ./modules/core
 
     ./modules/cli/ai
     ./modules/cli/file
