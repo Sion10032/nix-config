@@ -15,6 +15,7 @@
             enabled = true;
             maxRetries = 3;
           };
+          editorPaddingX = 1;
           theme = "terminal";
           packages = [
             "npm:@sion10032/pi-modes"
