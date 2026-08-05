@@ -17,7 +17,7 @@
     };
 
     homebrew = {
-      url = "git+https://mirrors.ustc.edu.cn/brew.git?ref=refs/tags/6.0.6";
+      url = "git+https://mirrors.ustc.edu.cn/brew.git?ref=refs/tags/6.0.13";
       flake = false;
     };
 
@@ -39,6 +39,8 @@
       inputs.systems.follows = "systems";
     };
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -54,6 +56,7 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
     zen-browser = {
@@ -81,8 +84,7 @@
 
     vscode-server = {
       url = "github:nix-community/nixos-vscode-server";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
+      inputs.flake-parts.follows = "flake-parts";
     };
   };
 
