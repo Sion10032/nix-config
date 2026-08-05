@@ -10,7 +10,6 @@
   sLib = import ./lib;
 
   users = [ "sion" ];
-  kanaFlakeRoot = ./.;
 
   commonGuiModules = [
     ./modules/gui/core.nix
@@ -67,7 +66,6 @@
     specialArgs = {
       inherit inputs;
       inherit users;
-      inherit kanaFlakeRoot;
     }
     // specialArgs
     // {
@@ -86,7 +84,6 @@
     specialArgs = {
       inherit inputs;
       inherit users;
-      inherit kanaFlakeRoot;
     }
     // specialArgs
     // {
