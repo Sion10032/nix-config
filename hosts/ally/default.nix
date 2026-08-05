@@ -1,8 +1,8 @@
-{ ... }: {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+{ inputs, ... }: {
+  imports = [
+    inputs.nixos-hardware.nixosModules.asus-ally-rc71l
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot = {
@@ -79,4 +79,3 @@
   system.stateVersion = "26.11"; # Did you read the comment?
 
 }
-

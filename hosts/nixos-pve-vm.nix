@@ -7,7 +7,7 @@
 #     home = { ... };
 #   };
 # }
-vm: { config, lib, pkgs, modulesPath, ... }:
+vm: { lib, modulesPath, ... }:
 {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")

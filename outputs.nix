@@ -3,8 +3,6 @@
   nixpkgs,
   home-manager,
   nix-darwin,
-  nixos-wsl,
-  nixos-hardware,
   ...
 }@inputs: let
   lib = nixpkgs.lib;
@@ -38,18 +36,15 @@
     ./modules/cli/file
     ./modules/cli/shell
     ./modules/cli/system/monitor.nix
-  ]
-  ++ lib.optionals (lib.hasSuffix "linux" system) [
+  ] ++ lib.optionals (lib.hasSuffix "linux" system) [
     ./modules/services/vscode-server.nix
 
     home-manager.nixosModules.home-manager
-  ]
-  ++ lib.optionals (lib.hasSuffix "darwin" system) [
+  ] ++ lib.optionals (lib.hasSuffix "darwin" system) [
     ./modules/homebrew.nix
 
     home-manager.darwinModules.home-manager
-  ]
-  ++ [
+  ] ++ [
     ./modules/home-manager
     ./modules/home-manager/users.nix
 
@@ -139,7 +134,8 @@ in {
         ./modules/services/virtualization/docker.nix
 
         ./modules/services/zed-remote-server.nix
-      ] ++ [
+      ]
+      ++ [
         ./modules/gui/linux-desktop/xfce4.nix
         (import ./modules/gui/linux-desktop/xrdp.nix "xfce4-session")
 
@@ -151,13 +147,6 @@ in {
     system = "x86_64-linux";
     modules =
       [
-        nixos-wsl.nixosModules.default
-        {
-          wsl = {
-            enable = true;
-            defaultUser = "sion";
-          };
-        }
         ./hosts/nixos-wsl
       ]
       ++ [
@@ -199,7 +188,6 @@ in {
     modules =
       [
         ./hosts/akari
-        nixos-hardware.nixosModules.microsoft-surface-pro-9
       ]
       ++ commonGuiModules
       ++ [
@@ -214,7 +202,6 @@ in {
     modules =
       [
         ./hosts/ally
-        nixos-hardware.nixosModules.asus-ally-rc71l
 
         ./modules/cli/system/xilo.nix
         ./modules/cli/music

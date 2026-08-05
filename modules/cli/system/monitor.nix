@@ -5,16 +5,15 @@
         enable = true;
       };
 
-      home.packages = with pkgs;
-        [
-          btop
-          bmon
-          smartmontools
-        ] ++ sLib.forLinux.list [
-          lm_sensors
-        ] ++ sLib.forDarwin.list [
-          macpm
-        ];
+      home.packages = with pkgs; [
+        btop
+        bmon
+        smartmontools
+      ] ++ sLib.forLinux.list [
+        lm_sensors
+      ] ++ sLib.forDarwin.list [
+        macpm
+      ];
     })
   ];
 }

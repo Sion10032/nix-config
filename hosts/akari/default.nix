@@ -1,29 +1,11 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, ... }:
-
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-
-  environment.systemPackages = with pkgs; [
-    catppuccin-grub
+{ inputs, ... }: {
+  imports = [
+    inputs.nixos-hardware.nixosModules.microsoft-surface-pro-9
+    ./hardware-configuration.nix
   ];
 
-  boot.loader = {
-    grub = {
-      enable = true;
-      device = "nodev"; # "nodev" is used for UEFI
-      efiSupport = true;
-      useOSProber = true;
-      theme = "${pkgs.catppuccin-grub}";
-    };
-    efi.canTouchEfiVariables = true;
-  };
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "akari"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -63,5 +45,5 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  system.stateVersion = "26.05"; # Did you read the comment?
+  system.stateVersion = "26.05";
 }
