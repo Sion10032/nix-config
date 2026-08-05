@@ -31,18 +31,15 @@
     # Nix Language Server
     nixd
     nil
-
-    # shell
-    fish
-    nushell
   ] ++ sLib.forLinux.list [
     net-tools
   ];
 
+  programs.fish.enable = true;
+
   home-manager.sharedModules = [
     ({ ... }: {
       programs.fish.enable = true;
-      programs.nushell.enable = true;
     })
   ];
 }
