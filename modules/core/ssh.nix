@@ -14,7 +14,7 @@
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFFOWLX9G5MP5V7RBYxkaz+Itb7iCkbzu+Nap3z3Y6VM";
     };
 
-    "nixos-vm-dev" = {
+    "atelier" = {
       extraHostNames = [ "192.168.2.12" ];
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN0NpQiwhjJAVd6MwbH4pq6rKHq/qfJOh9Ibuu/Dmv+h";
     };
@@ -33,7 +33,7 @@
       HostName 192.168.2.4
       User sion
 
-    Host nixos-vm-dev
+    Host atelier
       HostName 192.168.2.12
       User sion
 

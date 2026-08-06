@@ -1,7 +1,7 @@
 { ... }: {
   nix.buildMachines = [
     {
-      hostName = "nixos-vm-dev";
+      hostName = "atelier";
       system = "x86_64-linux";
       systems = [
         "x86_64-linux"

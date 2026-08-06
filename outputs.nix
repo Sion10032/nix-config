@@ -113,12 +113,12 @@ in {
         # ./modules/linux-dektop
       ];
   };
-  nixosConfigurations."nixos-vm-dev" = mkNixos {
+  nixosConfigurations."atelier" = mkNixos {
     system = "x86_64-linux";
     modules =
       [
         (import ./hosts/nixos-pve-vm.nix {
-          hostName = "nixos-vm-dev";
+          hostName = "atelier";
           disks = {
             efi.uuid = "FDA9-6E51";
             root.uuid = "d2e26f17-f215-4f50-a306-60ec97d88fb3";

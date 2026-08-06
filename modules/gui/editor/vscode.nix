@@ -45,7 +45,7 @@
       "remote.SSH.experimental.chat" = false;
       "remote.SSH.useLocalServer" = false;
       "remote.SSH.remotePlatform" = {
-        "nixos-vm-dev" = "linux";
+        "atelier" = "linux";
         "windows-dev" = "windows";
         "akari" = "linux";
         "ally" = "linux";
