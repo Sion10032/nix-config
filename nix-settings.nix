@@ -21,5 +21,12 @@
     ];
     trusted-users = [ "root" "@wheel" "builder" ];
   };
+  nix.extraOptions = ''
+    !include /etc/nix/access_tokens.conf
+  '';
   nixpkgs.config.allowUnfree = true;
+
+  sops.secrets."nix/access_tokens" = {
+    path = "/etc/nix/access_tokens.conf";
+  };
 }

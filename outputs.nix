@@ -1,8 +1,9 @@
 {
   self,
   nixpkgs,
-  home-manager,
   nix-darwin,
+  home-manager,
+  sops-nix,
   ...
 }@inputs: let
   lib = nixpkgs.lib;
@@ -28,20 +29,22 @@
   getCommonModules = system: [
     ./nix-settings.nix
     ./users.nix
+    ./sops
 
     ./modules/core
 
     ./modules/cli/ai
     ./modules/cli/file
+    ./modules/cli/security
     ./modules/cli/shell
     ./modules/cli/system/monitor.nix
   ] ++ lib.optionals (lib.hasSuffix "linux" system) [
     ./modules/services/vscode-server.nix
-
+    sops-nix.nixosModules.sops
     home-manager.nixosModules.home-manager
   ] ++ lib.optionals (lib.hasSuffix "darwin" system) [
     ./modules/homebrew.nix
-
+    sops-nix.darwinModules.sops
     home-manager.darwinModules.home-manager
   ] ++ [
     ./modules/home-manager

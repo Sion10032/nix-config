@@ -31,6 +31,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Shared nix-systems input used by flake-utils, nixvim, etc.
     systems.url = "github:nix-systems/default/future-26.11";
 
