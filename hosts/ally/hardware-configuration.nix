@@ -4,29 +4,35 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/3cc1b5d2-05c6-4d26-87a7-4c756fb28c41";
-      fsType = "btrfs";
-      options = [ "subvol=@" ];
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/3cc1b5d2-05c6-4d26-87a7-4c756fb28c41";
+    fsType = "btrfs";
+    options = [ "subvol=@" ];
+  };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/3cc1b5d2-05c6-4d26-87a7-4c756fb28c41";
-      fsType = "btrfs";
-      options = [ "subvol=@home" ];
-    };
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/3cc1b5d2-05c6-4d26-87a7-4c756fb28c41";
+    fsType = "btrfs";
+    options = [ "subvol=@home" ];
+  };
 
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/3cc1b5d2-05c6-4d26-87a7-4c756fb28c41";
-      fsType = "btrfs";
-      options = [ "subvol=@nix" ];
-    };
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-uuid/3cc1b5d2-05c6-4d26-87a7-4c756fb28c41";
+    fsType = "btrfs";
+    options = [ "subvol=@nix" ];
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/8E1E-30DB";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
+  fileSystems."/persist" = {
+    device = "/dev/disk/by-uuid/3cc1b5d2-05c6-4d26-87a7-4c756fb28c41";
+    fsType = "btrfs";
+    options = [ "subvol=@persist" ];
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/8E1E-30DB";
+    fsType = "vfat";
+    options = [ "fmask=0022" "dmask=0022" ];
+  };
 
   swapDevices = [ ];
 
