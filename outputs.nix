@@ -128,8 +128,8 @@ in {
       ]
       ++ commonGuiModules
       ++ [
+        ./modules/services/builder.nix
         ./modules/services/virtualization/docker.nix
-
         ./modules/services/zed-remote-server.nix
       ]
       ++ [

@@ -19,7 +19,7 @@
     extra-trusted-public-keys = [
       "pkgs:mgg3hmcRKfyp8AWvDg0yBP/Ml1o//ZNRt2YexyQUaKU="
     ];
-    trusted-users = [ "root" "@wheel" ];
+    trusted-users = [ "root" "@wheel" "builder" ];
   };
   nixpkgs.config.allowUnfree = true;
 }

@@ -5,6 +5,8 @@
     ./env.nix
     ./ssh.nix
 
+    ./buildMachines.nix
+
     ./linux.nix
   ];
 }
