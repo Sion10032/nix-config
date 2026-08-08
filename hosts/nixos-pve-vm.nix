@@ -5,6 +5,7 @@
 #     efi = { ... };
 #     root = { uuid = string; fsType = string; };
 #     home = { ... };
+#     persist = { ... };
 #   };
 # }
 vm: { lib, modulesPath, ... }:
@@ -95,4 +96,10 @@ vm: { lib, modulesPath, ... }:
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "26.05"; # Did you read the comment?
+}
+// lib.optionalAttrs (builtins.hasAttr "persist" vm.disks) {
+  fileSystems."/persist" = {
+    device = "/dev/disk/by-uuid/${vm.disks.persist.uuid}";
+    fsType = vm.disks.persist.fsType or "xfs";
+  };
 }
