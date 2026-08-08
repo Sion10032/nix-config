@@ -19,9 +19,18 @@
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN0NpQiwhjJAVd6MwbH4pq6rKHq/qfJOh9Ibuu/Dmv+h";
     };
 
-    # "akari".publicKey = "";
-    # "ally".publicKey = "";
-    # "iris".publicKey = "";
+    "akari" = {
+      extraHostNames = [ "192.168.2.211" ];
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPzQdv8F0itOD5h1L97fMBCZI45es0RuEYz3cuAq9Ubk";
+    };
+    "ally" = {
+      extraHostNames = [ "192.168.2.212" ];
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPBOtnZ+d5jSCaMdHqOgswoorRozi4E7NOSAjJZDG0d5";
+    };
+    "iris" = {
+      extraHostNames = [ "192.168.2.213" ];
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPBOtnZ+d5jSCaMdHqOgswoorRozi4E7NOSAjJZDG0d5";
+    };
   };
 
   programs.ssh.extraConfig = ''
@@ -37,16 +46,16 @@
       HostName 192.168.2.12
       User sion
 
-    # Host akari
-    #   HostName
-    #   User sion
+    Host akari
+      HostName 192.168.2.211
+      User sion
 
-    # Host ally
-    #   HostName
-    #   User sion
+    Host ally
+      HostName 192.168.2.212
+      User sion
 
-    # Host iris
-    #   HostName
-    #   User sion
+    Host iris
+      HostName 192.168.2.213
+      User sion
   '';
 }
