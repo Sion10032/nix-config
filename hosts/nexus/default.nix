@@ -10,19 +10,28 @@
       };
     })
 
-    ({ ... }: {
+    ({ pkgs, ... }: {
       services.tailscale.enable = true;
+      systemd.services.tailscaled = {
+        serviceConfig.ExecStart = [
+          ""
+          "${pkgs.tailscale}/bin/tailscaled --statedir=/persist/tailscale/ --socket=/run/tailscale/tailscaled.sock --port=\${PORT} $FLAGS"
+        ];
+      };
+
       services.coredns = {
         enable = true;
         config = ''
           .:53 {
               template IN ANY kanakana.moe {
-                  match "^(comics-proxy|kikoeru-proxy|lan-proxy\.i\.kanakana\.moe\.$"
+                  match "^(comics-proxy|kikoeru-proxy|lan-proxy)\.i\.kanakana\.moe\.$"
                   answer "{{ .Name }} 60 IN CNAME nexus.hs.kanakana.moe"
                   fallthrough
               }
 
-              forward . 223.5.5.5 223.6.6.6
+              forward . /etc/resolv.conf 223.5.5.5 223.6.6.6 {
+                policy sequential
+              }
               cache
           }
         '';

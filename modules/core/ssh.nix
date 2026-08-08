@@ -14,6 +14,11 @@
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFFOWLX9G5MP5V7RBYxkaz+Itb7iCkbzu+Nap3z3Y6VM";
     };
 
+    "nexus" = {
+      extraHostNames = [ "192.168.2.9" ];
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII5OuHhCLSUwDNxNSztfrB101ufFSqG7SoV6vDVEkvK9";
+    };
+
     "atelier" = {
       extraHostNames = [ "192.168.2.12" ];
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN0NpQiwhjJAVd6MwbH4pq6rKHq/qfJOh9Ibuu/Dmv+h";
@@ -42,6 +47,10 @@
       HostName 192.168.2.4
       User sion
 
+    Host nexus
+      HostName 192.168.2.9
+      User sion
+
     Host atelier
       HostName 192.168.2.12
       User sion
@@ -58,4 +67,11 @@
       HostName 192.168.2.213
       User sion
   '';
+
+  services.openssh.hostKeys = [
+    {
+      path = "/persist/etc/ssh/ssh_host_ed25519_key";
+      type = "ed25519";
+    }
+  ];
 }
