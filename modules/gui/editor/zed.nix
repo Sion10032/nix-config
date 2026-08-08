@@ -47,6 +47,7 @@
       bindings = builtins.listToAttrs (
         map (keys: { name = keys; value = [ "terminal::SendKeystroke" keys ]; }) [
           "ctrl-h"
+          "ctrl-k"
           "ctrl-n"
           "ctrl-p"
           "ctrl-q"
