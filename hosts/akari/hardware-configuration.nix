@@ -1,6 +1,7 @@
-{ config, lib, modulesPath, ... }: {
+{ inputs, config, lib, modulesPath, ... }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
+    inputs.nixos-hardware.nixosModules.microsoft-surface-pro-9
   ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "uas" "sd_mod" ];
@@ -9,29 +10,29 @@
   boot.extraModulePackages = [ ];
   boot.kernelParams = [ "pci=hpiosize=0" ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/6a5ee359-8576-43d0-a0b5-231ff06c8e97";
-      fsType = "btrfs";
-      options = [ "subvol=@" ];
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/6a5ee359-8576-43d0-a0b5-231ff06c8e97";
+    fsType = "btrfs";
+    options = [ "subvol=@" ];
+  };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/6a5ee359-8576-43d0-a0b5-231ff06c8e97";
-      fsType = "btrfs";
-      options = [ "subvol=@home" ];
-    };
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/6a5ee359-8576-43d0-a0b5-231ff06c8e97";
+    fsType = "btrfs";
+    options = [ "subvol=@home" ];
+  };
 
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/6a5ee359-8576-43d0-a0b5-231ff06c8e97";
-      fsType = "btrfs";
-      options = [ "subvol=@nix" ];
-    };
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-uuid/6a5ee359-8576-43d0-a0b5-231ff06c8e97";
+    fsType = "btrfs";
+    options = [ "subvol=@nix" ];
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/93D9-ACD5";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/93D9-ACD5";
+    fsType = "vfat";
+    options = [ "fmask=0022" "dmask=0022" ];
+  };
 
   swapDevices = [ ];
 

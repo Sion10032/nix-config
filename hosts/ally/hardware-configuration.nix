@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{ inputs, config, lib, ... }: {
+  imports = [
+    inputs.nixos-hardware.nixosModules.asus-ally-rc71l
+  ];
+
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usbhid" "uas" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
