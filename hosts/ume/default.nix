@@ -14,6 +14,7 @@
   ];
 
   moduleNames = [
+    "cli/ai"
     "cli/virtualization/lima.nix"
   ];
 }

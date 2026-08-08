@@ -33,7 +33,6 @@
 
     ./modules/core
 
-    ./modules/cli/ai
     ./modules/cli/file
     ./modules/cli/security
     ./modules/cli/shell

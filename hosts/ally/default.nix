@@ -26,13 +26,14 @@
   ];
 
   moduleNames = [
+    "cli/ai"
     "cli/system/xilo.nix"
     "cli/music"
-
-    "services/ime.nix"
 
     "gui/linux-desktop/steamos.nix"
     "gui/network/clash-verge-rev.nix"
     "gui/games"
+
+    "services/ime.nix"
   ];
 }

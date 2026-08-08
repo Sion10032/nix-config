@@ -24,5 +24,6 @@
     })
   ];
   moduleNames = [
+    "cli/ai"
   ];
 }

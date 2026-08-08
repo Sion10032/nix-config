@@ -14,11 +14,14 @@
   ];
 
   moduleNames = [
+    "cli/ai"
+
+    "gui/linux-desktop/xfce4.nix"
+    "gui/linux-desktop/xrdp.nix"
+
     "services/builder.nix"
     "services/virtualization/docker.nix"
     "services/zed-remote-server.nix"
-    "gui/linux-desktop/xfce4.nix"
-    "gui/linux-desktop/xrdp.nix"
 
     # ./modules/gui/linux-desktop/kde.nix
     # (import ./modules/gui/linux-desktop/xrdp.nix "startplasma-x11")

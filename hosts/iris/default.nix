@@ -14,6 +14,8 @@
   ];
 
   moduleNames = [
+    "cli/ai"
+
     "gui/system"
     "gui/network/clash-verge-rev.nix"
   ];
