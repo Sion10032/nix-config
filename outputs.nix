@@ -59,7 +59,7 @@
     })
   ];
   mkNixos = {
-    system,
+    system ? "x86_64-linux",
     modules,
     specialArgs ? {},
     ...
@@ -97,27 +97,7 @@
 in {
   overlays.default = import ./overlay.nix;
 
-  nixosConfigurations."nixos-vm" = mkNixos {
-    system = "x86_64-linux";
-    modules =
-      [
-        (import ./hosts/nixos-pve-vm.nix {
-          hostName = "nixos-vm";
-          disks = {
-            efi.uuid = "123C-A103";
-            root.uuid = "d391dd2e-579a-4768-aa1e-effd0d49e671";
-            home.uuid = "a9c67982-104b-4f67-9152-9779f3fb45d8";
-          };
-        })
-      ]
-      ++ commonGuiModules
-      ++ [
-        # ./modules/hardware.nix
-        # ./modules/linux-dektop
-      ];
-  };
   nixosConfigurations."atelier" = mkNixos {
-    system = "x86_64-linux";
     modules =
       [
         (import ./hosts/nixos-pve-vm.nix {
@@ -143,14 +123,6 @@ in {
         # (import ./modules/gui/linux-desktop/xrdp.nix "startplasma-x11")
       ];
   };
-  nixosConfigurations."nixos-wsl" = mkNixos {
-    system = "x86_64-linux";
-    modules =
-      [
-        ./hosts/nixos-wsl
-        ./modules/cli/media
-      ];
-  };
   darwinConfigurations."iris" = mkDarwin {
     system = "aarch64-darwin";
     modules =
@@ -172,7 +144,6 @@ in {
       ];
   };
   nixosConfigurations."akari" = mkNixos {
-    system = "x86_64-linux";
     modules =
       [
         ./hosts/akari
@@ -186,7 +157,6 @@ in {
       ];
   };
   nixosConfigurations."ally" = mkNixos {
-    system = "x86_64-linux";
     modules =
       [
         ./hosts/ally
@@ -202,6 +172,32 @@ in {
 
         ./modules/gui/network/clash-verge-rev.nix
         ./modules/gui/games
+      ];
+  };
+
+  nixosConfigurations."nixos-vm" = mkNixos {
+    modules =
+      [
+        (import ./hosts/nixos-pve-vm.nix {
+          hostName = "nixos-vm";
+          disks = {
+            efi.uuid = "123C-A103";
+            root.uuid = "d391dd2e-579a-4768-aa1e-effd0d49e671";
+            home.uuid = "a9c67982-104b-4f67-9152-9779f3fb45d8";
+          };
+        })
+      ]
+      ++ commonGuiModules
+      ++ [
+        # ./modules/hardware.nix
+        # ./modules/linux-dektop
+      ];
+  };
+  nixosConfigurations."nixos-wsl" = mkNixos {
+    modules =
+      [
+        ./hosts/nixos-wsl
+        ./modules/cli/media
       ];
   };
 }
