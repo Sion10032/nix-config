@@ -148,8 +148,6 @@ in {
     modules =
       [
         ./hosts/nixos-wsl
-      ]
-      ++ [
         ./modules/cli/media
       ];
   };
@@ -170,17 +168,7 @@ in {
     modules =
       [
         ./hosts/ume
-      ]
-      ++ [
         ./modules/cli/virtualization/lima.nix
-
-        # ({ ... }: {
-        #   launchd.daemons.nix-daemon.serviceConfig.EnvironmentVariables = {
-        #     HTTP_PROXY  = "http://192.168.2.251:8192";
-        #     HTTPS_PROXY = "http://192.168.2.251:8192";
-        #     ALL_PROXY   = "http://192.168.2.251:8192";
-        #   };
-        # })
       ];
   };
   nixosConfigurations."akari" = mkNixos {
