@@ -19,21 +19,30 @@ vm: { lib, modulesPath, ... }:
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/${vm.disks.efi.uuid}";
-    fsType = vm.disks.efi.fsType or "vfat";
-    options = [ "fmask=0077" "dmask=0077" ];
-  };
+  fileSystems =
+    {
+      "/boot" = {
+        device = "/dev/disk/by-uuid/${vm.disks.efi.uuid}";
+        fsType = vm.disks.efi.fsType or "vfat";
+        options = [ "fmask=0077" "dmask=0077" ];
+      };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/${vm.disks.root.uuid}";
-    fsType = vm.disks.root.fsType or "xfs";
-  };
+      "/" = {
+        device = "/dev/disk/by-uuid/${vm.disks.root.uuid}";
+        fsType = vm.disks.root.fsType or "xfs";
+      };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/${vm.disks.home.uuid}";
-    fsType = vm.disks.home.fsType or "xfs";
-  };
+      "/home" = {
+        device = "/dev/disk/by-uuid/${vm.disks.home.uuid}";
+        fsType = vm.disks.home.fsType or "xfs";
+      };
+    }
+    // lib.optionalAttrs (builtins.hasAttr "persist" vm.disks) {
+      "/persist" = {
+        device = "/dev/disk/by-uuid/${vm.disks.persist.uuid}";
+        fsType = vm.disks.persist.fsType or "xfs";
+      };
+    };
 
   swapDevices = [ ];
 
@@ -96,10 +105,4 @@ vm: { lib, modulesPath, ... }:
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "26.05"; # Did you read the comment?
-}
-// lib.optionalAttrs (builtins.hasAttr "persist" vm.disks) {
-  fileSystems."/persist" = {
-    device = "/dev/disk/by-uuid/${vm.disks.persist.uuid}";
-    fsType = vm.disks.persist.fsType or "xfs";
-  };
 }
