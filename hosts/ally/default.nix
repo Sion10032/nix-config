@@ -1,7 +1,7 @@
 {
   modules = [
     ./hardware-configuration.nix
-    ({ inputs, ... }: {
+    ({ ... }: {
       boot.loader.systemd-boot = {
         enable = true;
         edk2-uefi-shell.enable = true;
