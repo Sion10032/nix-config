@@ -54,12 +54,18 @@
 
         streamConfig = ''
           server {
-            listen 80;
-            proxy_pass 192.168.2.3:80;
-          }
-          server {
             listen 443;
             proxy_pass 192.168.2.3:443;
+          }
+
+          # rdp forward
+          server {
+            listen 33810;
+            proxy_pass 192.168.2.10:3389;
+          }
+          server {
+            listen 33811;
+            proxy_pass 192.168.2.11:3389;
           }
         '';
 
