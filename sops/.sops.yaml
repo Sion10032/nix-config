@@ -1,9 +1,11 @@
 keys:
   - &atelier age158hl482xhjnn9zx0vnj4nx3mq6rz0nvt3ktrserxv64zcglxkqdqaczdng
   - &ally age1xxdeydchzzl8vqf6yj4xnz7kqfqrlhyayv0kp7653upgtkr55assk5z7jz
+  - &nexus age1mgmhrxhxrdn9ckzd5a6a0an6gavh3knqx8dzsdluk2qdtyy4jfss450rr7
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
     - age:
       - *atelier
       - *ally
+      - *nexus
