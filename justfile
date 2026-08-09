@@ -1,7 +1,12 @@
 DEFAULT_SOPS_AGE_KEY_FILE := '/persist/private/age/key.txt'
 
-d host=`hostname -s` *flags:
+alias d := deploy
+
+deploy host=`hostname -s` *flags:
     nixos-rebuild switch --flake ~/nix-config#{{host}} --target-host root@{{host}} --show-trace {{flags}}
+
+deploy-user host *flags:
+    nixos-rebuild switch --flake ~/nix-config#{{host}} --target-host sion@{{host}} --show-trace --elevate=sudo --ask-elevate-password {{flags}}
 
 debug:
     nix repl .
