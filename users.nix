@@ -1,4 +1,4 @@
-{ lib, sLib, pkgs, users, ... }: let
+{ lib, sLib, pkgs, sUsers, ... }: let
   getLinuxConfigs = user: sLib.forLinux.attrs {
     home = "/home/${user}";
     extraGroups = [ "wheel" ]; # Enable 'sudo' for the user.
@@ -18,4 +18,4 @@
     ];
   };
 in
-  lib.mergeAttrsList (lib.map getUserConfig users)
+  lib.mergeAttrsList (lib.map getUserConfig sUsers)

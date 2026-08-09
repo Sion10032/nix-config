@@ -10,7 +10,7 @@
 
   sLib = import ./lib;
 
-  users = [ "sion" ];
+  sUsers = [ "sion" ];
 
   commonGuiModules = [
     ./modules/gui/core.nix
@@ -68,7 +68,7 @@
   builder {
     inherit system;
     specialArgs =
-      { inherit inputs users; }
+      { inherit inputs sUsers; }
       // specialArgs
       // { sLib = (sLib { inherit system; inherit lib; }); };
     modules =

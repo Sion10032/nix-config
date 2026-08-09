@@ -1,4 +1,4 @@
-{ lib, users, ... }: let
+{ lib, sUsers, ... }: let
   getUserConfig = user: {
     users.users."${user}".extraGroups = [ "docker" ];
   };
@@ -6,4 +6,4 @@ in {
   virtualisation.docker = {
     enable = true;
   };
-} // lib.mergeAttrsList (lib.map getUserConfig users)
+} // lib.mergeAttrsList (lib.map getUserConfig sUsers)

@@ -1,4 +1,10 @@
-{ ... }: {
+{ lib, sUsers, ... }: let
+  setAuthorizedKeys = user: {
+    "${user}".openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII6aiigaZJ7Xd7vMDv2GAQuhwp5tRRLO2NeMnogyK93g"
+    ];
+  };
+in {
   programs.ssh.knownHosts = {
     "github.com" = {
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
@@ -74,4 +80,6 @@
       type = "ed25519";
     }
   ];
+
+  users.users = lib.mergeAttrsList (lib.map setAuthorizedKeys ([ "root" ] ++ sUsers));
 }
