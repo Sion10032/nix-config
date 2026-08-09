@@ -20,5 +20,8 @@ sops-edit key-file=DEFAULT_SOPS_AGE_KEY_FILE:
 sops-update key-file=DEFAULT_SOPS_AGE_KEY_FILE:
     cd ./sops && sudo SOPS_AGE_KEY_FILE={{key-file}} sops updatekeys ./secrets/common.yaml
 
+commit-msg:
+    pi --no-session -p "Generate a git commit message. Output only the commit message, no explanation."
+
 z:
     zellij a -c nix
