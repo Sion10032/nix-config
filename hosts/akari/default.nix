@@ -1,4 +1,6 @@
 {
+  gui = true;
+
   modules = [
     ./hardware-configuration.nix
     ({ ... }: {
@@ -23,6 +25,7 @@
       services.displayManager.gdm.enable = true;
     })
   ];
+
   moduleNames = [
     "cli/ai"
   ];

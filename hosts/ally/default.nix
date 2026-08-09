@@ -1,4 +1,6 @@
 {
+  gui = true;
+
   modules = [
     ./hardware-configuration.nix
     ({ ... }: {

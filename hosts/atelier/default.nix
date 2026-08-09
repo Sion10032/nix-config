@@ -1,4 +1,6 @@
 {
+  gui = true;
+
   modules = [
     (import ../utils/mkNixosPveVm.nix {
       hostName = "atelier";

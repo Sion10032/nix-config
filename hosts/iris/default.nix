@@ -1,4 +1,6 @@
 {
+  gui = true;
+
   modules = [
     ({ ... }: {
       # Set Git commit hash for darwin-version.
