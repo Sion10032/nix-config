@@ -32,7 +32,11 @@
               forward . /etc/resolv.conf 223.5.5.5 223.6.6.6 {
                 policy sequential
               }
-              cache
+
+              cache {
+                  success 4096 300
+                  denial 512 5
+              }
           }
         '';
       };
