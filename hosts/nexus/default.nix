@@ -10,7 +10,16 @@
       };
     })
 
-    ({ pkgs, ... }: {
+    ({ lib, pkgs, ... }: let
+      domains = lib.concatStringsSep "|" [
+        "comics-proxy"
+        "kikoeru-proxy"
+        "lan-proxy"
+        "firefox"
+        "qq"
+        "wechat"
+      ];
+    in {
       services.tailscale.enable = true;
       systemd.services.tailscaled = {
         serviceConfig.ExecStart = [
@@ -24,7 +33,7 @@
         config = ''
           .:53 {
               template IN ANY kanakana.moe {
-                  match "^(comics-proxy|kikoeru-proxy|lan-proxy)\.i\.kanakana\.moe\.$"
+                  match "^(${domains})\.i\.kanakana\.moe\.$"
                   answer "{{ .Name }} 60 IN CNAME nexus.hs.kanakana.moe"
                   fallthrough
               }
