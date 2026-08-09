@@ -1,4 +1,6 @@
 { ... }: {
+  environment.enableAllTerminfo = true;
+
   home-manager.sharedModules = [
     ({ ... }: {
       programs.direnv = {

@@ -1,6 +1,4 @@
 { ... }: {
-  environment.enableAllTerminfo = true;
-
   home-manager.sharedModules = [
     ({ ... }: {
       programs.rio = {
