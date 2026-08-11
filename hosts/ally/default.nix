@@ -8,6 +8,7 @@
         enable = true;
         edk2-uefi-shell.enable = true;
         extraFiles = {
+          # driver from https://github.com/jlobue10/UsbXbox360Dxe
           "EFI/systemd/drivers/UsbXbox360Dxe-x64.efi" = ./UsbXbox360Dxe-x64.efi;
         };
       };
