@@ -21,15 +21,16 @@
           editorPaddingX = 1;
           theme = "terminal";
           packages = [
+            "npm:pi-terminal-theme"
+            "npm:pi-zentui"
+            "npm:pi-web-access"
+            "npm:@juicesharp/rpiv-todo"
+            "npm:pi-loop-police"
+            "npm:@tintinweb/pi-subagents"
+            "npm:context-mode"
             "npm:@sion10032/pi-modes"
             # "npm:pi-lens"
-            "npm:context-mode"
-            "npm:pi-loop-police"
-            "npm:pi-web-access"
             # "npm:@narumitw/pi-goal"
-            "npm:@juicesharp/rpiv-todo"
-            "npm:pi-zentui"
-            "npm:pi-terminal-theme"
           ];
         };
       };
