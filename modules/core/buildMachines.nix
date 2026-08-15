@@ -1,4 +1,5 @@
 { sLib, ... }: {
+  nix.distributedBuilds = true;
   nix.buildMachines = [
     ({
       hostName = "atelier";
