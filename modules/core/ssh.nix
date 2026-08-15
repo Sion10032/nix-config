@@ -1,4 +1,4 @@
-{ lib, sUsers, ... }: let
+{ lib, sLib, sUsers, ... }: let
   setAuthorizedKeys = user: {
     "${user}".openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII6aiigaZJ7Xd7vMDv2GAQuhwp5tRRLO2NeMnogyK93g"
@@ -74,12 +74,21 @@ in {
       User sion
   '';
 
+  users.users = lib.mergeAttrsList (lib.map setAuthorizedKeys ([ "root" ] ++ sUsers));
+}
+// sLib.forLinux.attrs {
   services.openssh.hostKeys = [
     {
       path = "/persist/etc/ssh/ssh_host_ed25519_key";
       type = "ed25519";
     }
   ];
-
-  users.users = lib.mergeAttrsList (lib.map setAuthorizedKeys ([ "root" ] ++ sUsers));
+}
+// sLib.forDarwin.attrs {
+  services.openssh.hostKeys = [
+    {
+      path = "/Volumes/persist/etc/ssh/ssh_host_ed25519_key";
+      type = "ed25519";
+    }
+  ];
 }

@@ -9,7 +9,13 @@
     list = args: [];
     string = args: "";
   };
-in if (lib.hasSuffix "linux" system) then {
+in {
+  firstNonEmptyString = strs: lib.findFirst
+    (s: s != "" && s != null)
+    ""
+    strs;
+}
+// (if (lib.hasSuffix "linux" system) then {
   forDarwin = disable;
   forLinux = enable;
 }
@@ -20,4 +26,4 @@ else if (lib.hasSuffix "darwin" system) then {
 else {
   forDarwin = disable;
   forLinux = disable;
-}
+})
