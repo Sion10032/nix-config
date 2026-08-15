@@ -1,5 +1,11 @@
-{ ... }: {
-  environment.enableAllTerminfo = true;
+{ pkgs, ... }: {
+  environment.systemPackages = map (x: x.terminfo) (
+    with pkgs.pkgsBuildBuild; [
+      # alacritty
+      kitty
+      # rio
+    ]
+  );
 
   home-manager.sharedModules = [
     ({ ... }: {
