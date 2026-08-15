@@ -11,6 +11,5 @@
   ];
 
   time.timeZone = "Asia/Shanghai";
-  networking.firewall.enable = true;
   services.openssh.enable = true;
 }

@@ -1,4 +1,6 @@
 { sLib, ... }: sLib.forLinux.attrs {
+  networking.firewall.enable = true;
+
   # Run unpatched dynamic binaries on NixOS.
   programs.nix-ld.enable = true;
 
