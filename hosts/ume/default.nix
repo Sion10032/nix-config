@@ -19,6 +19,8 @@
 
   moduleNames = [
     "cli/ai"
-    "cli/virtualization/lima.nix"
+    # "cli/virtualization/lima.nix"
+
+    "services/zed-remote-server.nix"
   ];
 }
