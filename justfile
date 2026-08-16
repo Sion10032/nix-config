@@ -1,16 +1,18 @@
 DEFAULT_SOPS_AGE_KEY_FILE := '/persist/private/age/key.txt'
+OS := `uname -s`
+REBUILD_COMMAND := if OS == 'Darwin' { 'darwin-rebuild' } else { 'nixos-rebuild' }
 
 alias d := deploy
 
 deploy host='' *flags:
     if [ '{{host}}' = '' ]; then \
-        sudo nixos-rebuild switch --flake ~/nix-config --show-trace {{flags}}; \
+        sudo {{REBUILD_COMMAND}} switch --flake ~/nix-config --show-trace {{flags}}; \
     else \
-        nixos-rebuild switch --flake ~/nix-config#{{host}} --target-host root@{{host}} --show-trace {{flags}}; \
+        {{REBUILD_COMMAND}} switch --flake ~/nix-config#{{host}} --target-host root@{{host}} --show-trace {{flags}}; \
     fi
 
 deploy-user host *flags:
-    nixos-rebuild switch --flake ~/nix-config#{{host}} --target-host sion@{{host}} --show-trace --elevate=sudo --ask-elevate-password {{flags}}
+    {{REBUILD_COMMAND}} switch --flake ~/nix-config#{{host}} --target-host sion@{{host}} --show-trace --elevate=sudo --ask-elevate-password {{flags}}
 
 debug:
     nix repl .
