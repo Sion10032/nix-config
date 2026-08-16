@@ -1,13 +1,15 @@
 keys:
   - &atelier age158hl482xhjnn9zx0vnj4nx3mq6rz0nvt3ktrserxv64zcglxkqdqaczdng
-  - &ally age1xxdeydchzzl8vqf6yj4xnz7kqfqrlhyayv0kp7653upgtkr55assk5z7jz
+  - &ume age1vl6n9yypuzerhhwnukg30rs7y4003zu989dgna044ahhcderz37s48rz66
   - &nexus age1mgmhrxhxrdn9ckzd5a6a0an6gavh3knqx8dzsdluk2qdtyy4jfss450rr7
+  - &ally age1xxdeydchzzl8vqf6yj4xnz7kqfqrlhyayv0kp7653upgtkr55assk5z7jz
   - &iris age18wcuwp53xpfn64h64w69p7djcf8yuszewtsd0fdp6nnnz3ms3d7q70yfse
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
     - age:
       - *atelier
-      - *ally
+      - *ume
       - *nexus
+      - *ally
       - *iris
