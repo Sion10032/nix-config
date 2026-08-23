@@ -10,7 +10,7 @@
 
         settings = {
           defaultProvider = "opencode";
-          defaultModel = "deepseek-v4-flash-free";
+          defaultModel = "big-pickle";
 
           showHardwareCursor =  true;
           enableInstallTelemetry = false;
@@ -24,11 +24,13 @@
             "npm:pi-terminal-theme"
             "npm:pi-zentui"
             "npm:pi-web-access"
-            "npm:@juicesharp/rpiv-todo"
-            "npm:pi-loop-police"
+            "npm:@tintinweb/pi-tasks"
             "npm:@tintinweb/pi-subagents"
+            "npm:@juicesharp/rpiv-ask-user-question"
+            "npm:pi-loop-police"
             "npm:context-mode"
             "npm:@sion10032/pi-modes"
+            "git:github.com/obra/superpowers"
             # "npm:pi-lens"
             # "npm:@narumitw/pi-goal"
           ];

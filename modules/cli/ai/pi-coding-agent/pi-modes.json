@@ -16,7 +16,13 @@
       "module_report",
       "read_enclosing",
       "read_symbol",
-      "todo"
+      "TaskCreate",
+      "TaskExecute",
+      "TaskGet",
+      "TaskList",
+      "TaskOutput",
+      "TaskStop",
+      "TaskUpdate"
     ]
   },
   "readonly": {
@@ -36,7 +42,13 @@
       "module_report",
       "read_enclosing",
       "read_symbol",
-      "todo"
+      "TaskCreate",
+      "TaskExecute",
+      "TaskGet",
+      "TaskList",
+      "TaskOutput",
+      "TaskStop",
+      "TaskUpdate"
     ]
   }
 }
