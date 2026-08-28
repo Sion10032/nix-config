@@ -1,6 +1,5 @@
-{ sLib, ... }: {
-  nix.distributedBuilds = true;
-  nix.buildMachines = [
+{ sLib, config, ... }: let
+  builders = [
     ({
       hostName = "atelier";
       system = "x86_64-linux";
@@ -25,4 +24,9 @@
       sshKey = "/Volumes/persist/private/builder";
     })
   ];
+in {
+  nix.distributedBuilds = true;
+  nix.buildMachines = builtins.filter
+    (machine: machine.hostName != config.networking.hostName)
+    builders;
 }
