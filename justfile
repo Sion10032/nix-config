@@ -1,6 +1,6 @@
-DEFAULT_SOPS_AGE_KEY_FILE := '/persist/private/age/key.txt'
 OS := `uname -s`
 REBUILD_COMMAND := if OS == 'Darwin' { 'darwin-rebuild' } else { 'nixos-rebuild' }
+DEFAULT_SOPS_AGE_KEY_FILE := '/persist/private/age/key.txt'
 
 alias d := deploy
 
