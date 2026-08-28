@@ -24,7 +24,7 @@
     "services/builder.nix"
     "services/virtualization/docker.nix"
     "services/zed-remote-server.nix"
-
+    "services/ime.nix"
     # ./modules/gui/linux-desktop/kde.nix
     # (import ./modules/gui/linux-desktop/xrdp.nix "startplasma-x11")
   ];
