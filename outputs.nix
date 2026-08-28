@@ -1,6 +1,7 @@
 {
   self,
   nixpkgs,
+  nur,
   nix-darwin,
   home-manager,
   sops-nix,
@@ -51,8 +52,9 @@
 
     ./modules/cli/nixvim
   ] ++ [
+    nur.modules.nixos.default
     ({ ... }: {
-      nixpkgs.overlays = [
+      nixpkgs.overlays = lib.mkAfter [
         self.overlays.default
       ];
     })

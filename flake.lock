@@ -276,6 +276,29 @@
         "type": "github"
       }
     },
+    "nur": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1787896842,
+        "narHash": "sha256-OMbrkRd7Olou/xGPy8yty7M+PUVyEm0S+DYBADRxtQw=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "f431120ef6c6017cfb9bea5785756c2225de1501",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -289,6 +312,7 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
+        "nur": "nur",
         "sops-nix": "sops-nix",
         "systems": "systems",
         "vscode-server": "vscode-server",
