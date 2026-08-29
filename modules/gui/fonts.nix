@@ -1,4 +1,4 @@
-{ sLib, pkgs, lib, ... }:let
+{ sLib, pkgs, ... }:let
   fonts = with pkgs; [
     misans
     noto-fonts-cjk-sans
@@ -12,6 +12,8 @@ in
     packages = fonts;
   }
   // sLib.forLinux.attrs {
+    fontDir.enable = true;
+
     fontconfig.defaultFonts = {
       sansSerif = [
         "MiSans"
@@ -33,7 +35,7 @@ in
 // sLib.forLinux.attrs {
   system.userActivationScripts.linktosharedfolder.text = ''
 		if [[ ! -h "$HOME/.local/share/fonts" ]]; then
-		 ln -s "/run/current-system/sw/share/fonts" "$HOME/.local/share/fonts"
+		 ln -s "/run/current-system/sw/share/X11/fonts" "$HOME/.local/share/fonts"
 		fi
 	'';
 
