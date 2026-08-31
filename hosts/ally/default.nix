@@ -24,6 +24,9 @@
       };
       services.libinput.enable = true;
 
+      services.power-profiles-daemon.enable = true;
+      services.upower.enable = true;
+
       system.stateVersion = "26.11";
     })
   ];
