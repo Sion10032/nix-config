@@ -1,15 +1,22 @@
 { inputs, pkgs, sLib, ... }: sLib.forLinux.attrs {
   imports = [
     inputs.jovian.nixosModules.default
-    # ./kde.nix
-    ./cosmic.nix
+    ./kde.nix
+    # ./cosmic.nix
+    # ./hyprland
   ];
+
+  # services.displayManager.sddm = {
+  #  enable = true;
+  #  wayland.enable = true;
+  # };
+
   jovian.steam = {
     enable = true;
     autoStart = true;
     user = "sion";
-    # desktopSession = "plasma";
-    desktopSession = "cosmic";
+    desktopSession = "plasma";
+    # desktopSession = "cosmic";
   };
   jovian.hardware.has.amd.gpu = true;
 
