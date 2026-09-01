@@ -17,6 +17,15 @@
       users.knownUsers = [ "sion" ];
       users.users.sion.uid = 501;
     })
+    ({ ... }: {
+      homebrew.brews = [
+        "localai"
+      ];
+      homebrew.casks = [
+        "crisp"
+        "rustdesk"
+      ];
+    })
   ];
 
   moduleNames = [
