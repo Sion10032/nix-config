@@ -24,6 +24,8 @@
       homebrew.casks = [
         "crisp"
         "rustdesk"
+        "stats"
+        "zcode"
       ];
     })
   ];
