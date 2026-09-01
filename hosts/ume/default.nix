@@ -23,6 +23,7 @@
     "cli/ai"
     # "cli/virtualization/lima.nix"
 
+    "services/builder.nix"
     "services/zed-remote-server.nix"
   ];
 }
