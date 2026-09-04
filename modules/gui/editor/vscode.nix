@@ -24,8 +24,9 @@
 
       "terminal.integrated.fontSize" = 14;
       "terminal.integrated.shellIntegration.showCommandGuide" = false;
-      # 目前版本vscode启用终端图像显示后，浅色模式下终端字体显示有问题，暂时禁用该功能
-      "terminal.integrated.enableImages" = false;
+      # vscode + wayland + amd 780m gpu 开启终端gpu加速会卡死，暂时禁用
+      "terminal.integrated.gpuAcceleration" = "off";
+      # "terminal.integrated.enableImages" = false;
       "terminal.integrated.fontLigatures.enabled" = true;
       "terminal.integrated.defaultProfile.osx" = "fish";
 
