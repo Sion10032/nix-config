@@ -16,5 +16,6 @@
   environment.systemPackages = with pkgs; [
     klassy
     papirus-icon-theme
+    colloid-icon-theme
   ];
 }
