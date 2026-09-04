@@ -1,6 +1,5 @@
 { sLib, pkgs, ... }:let
   fonts = with pkgs; [
-    misans
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     maple-mono.Normal-NF-CN
@@ -16,12 +15,10 @@ in
 
     fontconfig.defaultFonts = {
       sansSerif = [
-        "MiSans"
         "Noto Sans CJK SC"
       ];
 
       serif = [
-        "MiSans"
         "Noto Sans CJK SC"
         "Noto Serif CJK SC"
       ];
