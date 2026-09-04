@@ -29,6 +29,11 @@
 
       system.stateVersion = "26.11";
     })
+    ({ pkgs, ...}: {
+      environment.systemPackages = with pkgs; [
+        dotool
+      ];
+    })
   ];
 
   moduleNames = [
