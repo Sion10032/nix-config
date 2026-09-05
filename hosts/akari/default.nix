@@ -17,16 +17,23 @@
       };
       services.libinput.enable = true;
 
+      services.power-profiles-daemon.enable = true;
+      services.upower.enable = true;
+
       system.stateVersion = "26.05";
     })
 
     ({ ... }: {
-      services.desktopManager.gnome.enable = true;
-      services.displayManager.gdm.enable = true;
+      services.displayManager.sddm = {
+       enable = true;
+       wayland.enable = true;
+      };
     })
   ];
 
   moduleNames = [
     "cli/ai"
+    
+    "gui/linux-desktop/hyprland"
   ];
 }

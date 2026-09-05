@@ -1,4 +1,4 @@
-{ inputs, config, lib, modulesPath, ... }: {
+{ inputs, config, lib, pkgs, modulesPath, ... }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.nixos-hardware.nixosModules.microsoft-surface-pro-9
@@ -9,7 +9,38 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [ "pci=hpiosize=0" ];
+  boot.kernelPatches = [
+    {
+      name = "gpu-trim";
+      patch = null;
+      structuredExtraConfig = with pkgs.lib.kernel; {
+        # AMD
+        DRM_AMDGPU = no;
+        DRM_RADEON = no;
 
+        # NVIDIA
+        DRM_NOUVEAU = no;
+        DRM_NVIDIA = no;
+      };
+    }
+    {
+      name = "trim-unused-fs";
+      patch = null;
+      structuredExtraConfig = with pkgs.lib.kernel; {
+        # embedded FS
+        UBIFS_FS = no;
+        JFFS2_FS = no;
+        YAFFS_FS = no;
+
+        # legacy FS
+        REISERFS_FS = no;
+        JFS_FS = no;
+        HFS_FS = no;
+        HFSPLUS_FS = no;
+      };
+    }
+  ];
+  
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/6a5ee359-8576-43d0-a0b5-231ff06c8e97";
     fsType = "btrfs";
@@ -28,6 +59,12 @@
     options = [ "subvol=@nix" ];
   };
 
+  fileSystems."/persist" = {
+    device = "/dev/disk/by-uuid/6a5ee359-8576-43d0-a0b5-231ff06c8e97";
+    fsType = "btrfs";
+    options = [ "subvol=@persist" ];
+  };
+  
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/93D9-ACD5";
     fsType = "vfat";
