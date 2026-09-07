@@ -1,14 +1,17 @@
 { pkgs, ... }: {
   imports = [
+    ../components
     ./noctalia.nix
   ];
 
   programs.hyprland = {
     enable = true;
+    withUWSM = true;
   };
 
+  programs.nemo.enable = true;
+
   environment.systemPackages = with pkgs; [
-    nemo
     mission-center
   ];
 
