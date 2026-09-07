@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ sLib, lib, pkgs, ... }: {
   imports = [
     ../components
     ./noctalia.nix
@@ -14,6 +14,7 @@
   environment.systemPackages = with pkgs; [
     adw-gtk3
     mission-center
+    brightnessctl
   ];
 
   # todo use uwsm https://wiki.hyprland.org/Useful-Utilities/Systemd-start/
@@ -21,8 +22,8 @@
   home-manager.sharedModules = [
     ({ ... }: {
       wayland.windowManager.hyprland.enable = true;
-      # wayland.windowManager.hyprland.settings = import ./settings.nix {};
-      xdg.configFile."hypr/hyprland.lua".source = ./hyprland.lua;
+      wayland.windowManager.hyprland.settings = import ./settings.nix { inherit sLib lib; };
+      # xdg.configFile."hypr/hyprland.lua".source = ./hyprland.lua;
 
       services.hyprpolkitagent.enable = true;
       # services.hyprpaper = {

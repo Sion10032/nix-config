@@ -26,6 +26,7 @@ in {
     (num: num != 0)
     0
     numbers;
+  mergeAttrs = attrsList: lib.foldl' lib.recursiveUpdate {} attrsList;
 }
 // (if (lib.hasSuffix "linux" system) then {
   forDarwin = disable;
