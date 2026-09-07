@@ -12,6 +12,7 @@
   programs.nemo.enable = true;
 
   environment.systemPackages = with pkgs; [
+    adw-gtk3
     mission-center
   ];
 
