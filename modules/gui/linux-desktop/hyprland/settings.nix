@@ -1,6 +1,6 @@
 { sLib, lib, ... }: let 
-  mkModBind = keys: lib.generators.mkLuaInline "mod .. \" + ${keys}\"";
-  mkDsp     = args: lib.generators.mkLuaInline "hl.dsp.${args}";
+  mkModBind = keys: lib.mkLuaInline "mod .. \" + ${keys}\"";
+  mkDsp     = args: lib.mkLuaInline "hl.dsp.${args}";
 in sLib.mergeAttrs [
   # appearance
   {
@@ -117,8 +117,8 @@ in sLib.mergeAttrs [
       ]) 10
       ++ [
         # Scroll through existing workspaces with mainMod + scroll
-        [ (mkModBind "mouse_down") (mkDsp "focus({ workspace = \"e+1\" }")  ]
-        [ (mkModBind "mouse_up")   (mkDsp "focus({ direction = \"e-1\" })") ]
+        [ (mkModBind "mouse_down") (mkDsp "focus({ workspace = \"e+1\" })")  ]
+        [ (mkModBind "mouse_up")   (mkDsp "focus({ workspace = \"e-1\" })") ]
         # Move/resize windows with mainMod + LMB/RMB and dragging
         [ (mkModBind "mouse:272") (mkDsp "window.drag()")   { mouse = true; } ]
         [ (mkModBind "mouse:273") (mkDsp "window.resize()") { mouse = true; } ]
