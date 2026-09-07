@@ -15,13 +15,12 @@ in {
   };
 
   config = lib.mkMerge [
-    (lib.mkIf config.programs.nemo.enable {
+    (lib.mkIf config.programs.nemo.enable ({
       environment.systemPackages = with pkgs; [
         nemo
         ffmpegthumbnailer
       ];
-
-    } // gvfsConfig)
+    } // gvfsConfig))
     (lib.mkIf config.programs.thunar.enable gvfsConfig)
   ];
 }
