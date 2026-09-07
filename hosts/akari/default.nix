@@ -30,7 +30,10 @@
 
   moduleNames = [
     "cli/ai"
+    "cli/music"
     
     "gui/linux-desktop/hyprland"
+
+    "services/ime.nix"
   ];
 }
