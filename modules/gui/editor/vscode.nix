@@ -30,8 +30,11 @@
       "terminal.integrated.gpuAcceleration" = "off";
       "terminal.integrated.enableImages" = false;
       "terminal.integrated.fontLigatures.enabled" = true;
-      "terminal.integrated.defaultProfile.osx" = "fish";
-      "terminal.integrated.sendKeybindingsToShell" = true;
+      "terminal.integrated.allowChords" = false;
+      "terminal.integrated.commandsToSkipShell" = [
+        "-workbench.action.quickOpen" # ctrl-p
+        "-workbench.action.terminal.goToRecentDirectory" # ctrl-g
+      ];
 
       "window.commandCenter" = false;
       "window.autoDetectColorScheme" = true;
