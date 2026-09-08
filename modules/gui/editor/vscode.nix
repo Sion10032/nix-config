@@ -20,15 +20,18 @@
       "editor.fontFamily" = "Maple Mono Normal NF CN";
       "editor.fontLigatures" = true;
 
+      "diffEditor.ignoreTrimWhitespace" = false;
+
       "files.autoGuessEncoding" =  true;
 
       "terminal.integrated.fontSize" = 14;
       "terminal.integrated.shellIntegration.showCommandGuide" = false;
       # vscode + wayland + amd 780m gpu 开启终端gpu加速会卡死，暂时禁用
       "terminal.integrated.gpuAcceleration" = "off";
-      # "terminal.integrated.enableImages" = false;
+      "terminal.integrated.enableImages" = false;
       "terminal.integrated.fontLigatures.enabled" = true;
       "terminal.integrated.defaultProfile.osx" = "fish";
+      "terminal.integrated.sendKeybindingsToShell" = true;
 
       "window.commandCenter" = false;
       "window.autoDetectColorScheme" = true;
