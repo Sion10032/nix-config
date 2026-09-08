@@ -58,6 +58,7 @@
         "ally" = "linux";
         "ume" = "macOS";
       };
+      "remote.autoForwardPorts" = false;
     };
   };
 in {
