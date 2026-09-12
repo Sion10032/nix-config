@@ -19,7 +19,6 @@
   builders = [
     (createBuilder {
       hostName = "atelier";
-      system = "x86_64-linux";
       systems = [
         "x86_64-linux"
         "i686-linux"
@@ -31,7 +30,6 @@
     })
     (createBuilder {
       hostName = "ume";
-      system = "aarch64-darwin";
       systems = [
         "aarch64-darwin"
       ];
