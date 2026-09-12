@@ -3,5 +3,6 @@
   homebrew.casks = [
     "stats"
     "karabiner-elements"
+    "linearmouse"
   ];
 })
