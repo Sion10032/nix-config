@@ -3,7 +3,7 @@
 
   modules = [
     ./hardware-configuration.nix
-    ({ ... }: {
+    ({ pkgs, ... }: {
       boot.loader.systemd-boot = {
         enable = true;
         edk2-uefi-shell.enable = true;
@@ -13,6 +13,8 @@
         };
       };
       boot.loader.efi.canTouchEfiVariables = true;
+
+      boot.kernelPackages = pkgs.linuxPackages_latest;
 
       networking.hostName = "ally";
 
