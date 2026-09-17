@@ -18,6 +18,7 @@
         "firefox"
         "qq"
         "wechat"
+        "pi"
       ];
     in {
       services.tailscale.enable = true;
@@ -59,13 +60,20 @@
           }
 
           # rdp forward
+          # island
           server {
             listen 33810;
             proxy_pass 192.168.2.10:3389;
           }
+          # windows-dev
           server {
             listen 33811;
             proxy_pass 192.168.2.11:3389;
+          }
+          # atelier
+          server {
+            listen 33812;
+            proxy_pass 192.168.2.12:3389;
           }
         '';
 
