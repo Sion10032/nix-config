@@ -319,6 +319,26 @@
         "type": "github"
       }
     },
+    "pi-web-ui": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789806700,
+        "narHash": "sha256-X2Gb0LdKi08IPoC5PH7ojwlmnCFBbAwP0D052HmIsJ8=",
+        "owner": "Sion10032",
+        "repo": "pi-web-ui-nix",
+        "rev": "8d953f3ce2773c92e9858945905234f7b5ee8545",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Sion10032",
+        "repo": "pi-web-ui-nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -334,6 +354,7 @@
         "nixvim": "nixvim",
         "noctalia": "noctalia",
         "nur": "nur",
+        "pi-web-ui": "pi-web-ui",
         "sops-nix": "sops-nix",
         "systems": "systems",
         "vscode-server": "vscode-server",

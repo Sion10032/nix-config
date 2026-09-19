@@ -57,6 +57,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    jovian = {
+      url = "github:Jovian-Experiments/Jovian-NixOS";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     xilo = {
       url = "github:stubbedev/xilo";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -79,8 +84,8 @@
       };
     };
 
-    jovian = {
-      url = "github:Jovian-Experiments/Jovian-NixOS";
+    pi-web-ui = {
+      url = "github:Sion10032/pi-web-ui-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
