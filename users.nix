@@ -3,6 +3,7 @@
     home = "/home/${user}";
     extraGroups = [ "wheel" ]; # Enable 'sudo' for the user.
     isNormalUser = true;
+    linger = true;
   };
   getDarwinConfigs = user: sLib.forDarwin.attrs {
     home = "/Users/${user}";
