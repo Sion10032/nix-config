@@ -1,8 +1,4 @@
 { ... }: {
-  imports = [
-    ./pi-web-ui.nix
-  ];
-
   home-manager.sharedModules = [
     ({ pkgs, lib, ... }: {
       programs.pi-coding-agent = {
