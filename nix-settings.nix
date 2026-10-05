@@ -26,7 +26,7 @@
   '';
   nixpkgs.config.allowUnfree = true;
 
-  sops.secrets."nix/access_tokens" = {
+  security.sops.secrets."nix/access_tokens" = {
     path = "/etc/nix/access_tokens.conf";
   };
 }
