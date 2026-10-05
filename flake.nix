@@ -23,7 +23,7 @@
     };
 
     homebrew = {
-      url = "git+https://mirrors.ustc.edu.cn/brew.git?ref=refs/tags/6.0.22";
+      url = "git+https://mirrors.ustc.edu.cn/brew.git?ref=refs/tags/7.0.4";
       flake = false;
     };
 
