@@ -19,9 +19,8 @@
             maxRetries = 3;
           };
           editorPaddingX = 1;
-          theme = "terminal";
+          theme = "system";
           packages = [
-            "npm:pi-terminal-theme"
             "npm:pi-zentui"
             "npm:pi-web-access"
             "npm:@tintinweb/pi-tasks"
