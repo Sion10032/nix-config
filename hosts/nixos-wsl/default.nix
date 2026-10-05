@@ -13,6 +13,9 @@
 
       system.stateVersion = "25.11";
     })
+    ({ ... }: {
+      security.sops.enable = false;
+    })
   ];
 
   moduleNames = [

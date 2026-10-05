@@ -8,6 +8,9 @@
         home.uuid = "a9c67982-104b-4f67-9152-9779f3fb45d8";
       };
     })
+    ({ ... }: {
+      security.sops.enable = false;
+    })
   ];
 
   moduleNames = [
