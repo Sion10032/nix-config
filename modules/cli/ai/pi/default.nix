@@ -18,6 +18,7 @@
             enabled = true;
             maxRetries = 3;
           };
+          treeFilterMode = "no-tools";
           editorPaddingX = 1;
           theme = "system";
           packages = [
@@ -28,7 +29,8 @@
             "npm:@juicesharp/rpiv-ask-user-question"
             "npm:pi-loop-police"
             "npm:context-mode"
-            "npm:@sion10032/pi-modes"
+            "npm:pi-context-view"
+            # "npm:@sion10032/pi-modes"
             "git:github.com/obra/superpowers"
             # "npm:pi-lens"
             # "npm:@narumitw/pi-goal"
