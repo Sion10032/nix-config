@@ -1,7 +1,6 @@
 {
   self,
   nixpkgs,
-  nur,
   nix-darwin,
   home-manager,
   sops-nix,
@@ -42,12 +41,10 @@
     ./modules/services/vscode-server.nix
     sops-nix.nixosModules.sops
     home-manager.nixosModules.home-manager
-    nur.modules.nixos.default
   ] ++ lib.optionals (lib.hasSuffix "darwin" system) [
     ./modules/homebrew.nix
     sops-nix.darwinModules.sops
     home-manager.darwinModules.home-manager
-    nur.modules.darwin.default
   ] ++ [
     ./modules/home-manager
     ./modules/home-manager/users.nix

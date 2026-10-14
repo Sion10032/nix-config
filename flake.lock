@@ -296,29 +296,6 @@
         "type": "github"
       }
     },
-    "nur": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1791168818,
-        "narHash": "sha256-pph08ArQatzm/n+zMYA7qR/5DHRf928uR4SfrgnZyXc=",
-        "owner": "nix-community",
-        "repo": "NUR",
-        "rev": "24b6939558e847485da7e3636a0bafcc7d610256",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "NUR",
-        "type": "github"
-      }
-    },
     "pi-web-ui": {
       "inputs": {
         "nixpkgs": [
@@ -353,7 +330,6 @@
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "noctalia": "noctalia",
-        "nur": "nur",
         "pi-web-ui": "pi-web-ui",
         "sops-nix": "sops-nix",
         "systems": "systems",
