@@ -358,7 +358,6 @@
         "sops-nix": "sops-nix",
         "systems": "systems",
         "vscode-server": "vscode-server",
-        "xilo": "xilo",
         "zen-browser": "zen-browser"
       }
     },
@@ -415,29 +414,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "nixos-vscode-server",
-        "type": "github"
-      }
-    },
-    "xilo": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1791144426,
-        "narHash": "sha256-UUiPli6dXBRBYtbGDW4iEGnwn0bVQuK92R3yPKuFH1A=",
-        "owner": "stubbedev",
-        "repo": "xilo",
-        "rev": "cc29514b2bc5c5ae4d6f6281b7706106b8a1300f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "stubbedev",
-        "repo": "xilo",
         "type": "github"
       }
     },

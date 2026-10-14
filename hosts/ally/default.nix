@@ -40,7 +40,6 @@
 
   moduleNames = [
     "cli/ai"
-    "cli/system/xilo.nix"
     "cli/music"
 
     "gui/linux-desktop/steamos.nix"
