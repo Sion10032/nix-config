@@ -11,6 +11,11 @@
       };
     })
     ({ ... }: {
+      # Open ports in the firewall.
+      networking.firewall.allowedTCPPorts = builtins.genList (x: 5170 + x) 10;
+      networking.firewall.allowedUDPPorts = builtins.genList (x: 5170 + x) 10;
+    })
+    ({ ... }: {
       services.xrdp.defaultWindowManager = "xfce4-session";
     })
   ];
