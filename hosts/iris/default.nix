@@ -1,5 +1,5 @@
 {
-  gui = true;
+  gui = [ "core" "extra" ];
 
   modules = [
     ({ ... }: {

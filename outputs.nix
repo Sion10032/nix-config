@@ -12,19 +12,22 @@
 
   sUsers = [ "sion" ];
 
-  commonGuiModules = [
-    ./modules/gui/core.nix
+  guiModules = {
+    core = [
+      ./modules/gui/core.nix
+      ./modules/gui/fonts.nix
+    ];
 
-    ./modules/gui/fonts.nix
-
-    ./modules/gui/browser
-    ./modules/gui/editor
-    ./modules/gui/file/peazip.nix
-    ./modules/gui/file/motrix-next.nix
-    ./modules/gui/media
-    ./modules/gui/network/remote-desktop.nix
-    ./modules/gui/terminal
-  ];
+    extra = [
+      ./modules/gui/browser
+      ./modules/gui/editor
+      ./modules/gui/file/peazip.nix
+      ./modules/gui/file/motrix-next.nix
+      ./modules/gui/media
+      ./modules/gui/network/remote-desktop.nix
+      ./modules/gui/terminal
+    ];
+  };
 
   getCommonModules = system: [
     ./nix-settings.nix
@@ -61,7 +64,7 @@
     system,
     modules ? [],
     specialArgs ? {},
-    gui ? false,
+    gui ? [],
     moduleNames? [],
     ...
   }@attrs:
@@ -74,7 +77,7 @@
     modules =
       (getCommonModules system)
       ++ modules
-      ++ lib.optionals gui commonGuiModules
+      ++ lib.concatMap (name: guiModules.${name}) gui
       ++ lib.map (name: ./modules/${name}) moduleNames;
   } // (removeAttrs attrs [ "system" "modules" "specialArgs" "gui" "moduleNames" ]);
 
