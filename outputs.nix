@@ -17,13 +17,18 @@
       ./modules/gui/core.nix
       ./modules/gui/fonts.nix
     ];
+    
+    basic = [
+      ./modules/gui/browser/zen.nix
+      ./modules/gui/editor/zed.nix
+      ./modules/gui/file/peazip.nix
+    ];
 
     extra = [
-      ./modules/gui/browser
-      ./modules/gui/editor
-      ./modules/gui/file/peazip.nix
+      ./modules/gui/browser/chromium.nix
+      ./modules/gui/editor/vscode.nix
       ./modules/gui/file/motrix-next.nix
-      ./modules/gui/media
+      ./modules/gui/media/mpv.nix
       ./modules/gui/network/remote-desktop.nix
       ./modules/gui/terminal
     ];

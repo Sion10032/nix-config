@@ -1,5 +1,5 @@
 {
-  gui = [ "core" "extra" ];
+  gui = [ "core" "basic" "extra" ];
 
   modules = [
     ./hardware-configuration.nix

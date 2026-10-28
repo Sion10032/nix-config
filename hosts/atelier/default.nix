@@ -1,5 +1,5 @@
 {
-  gui = [ "core" "extra" ];
+  gui = [ "core" "basic" ];
 
   modules = [
     (import ../utils/mkNixosPveVm.nix {
