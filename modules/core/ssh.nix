@@ -24,7 +24,10 @@ in {
       extraHostNames = [ "192.168.2.9" ];
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII5OuHhCLSUwDNxNSztfrB101ufFSqG7SoV6vDVEkvK9";
     };
-
+    "island" = {
+      extraHostNames = [ "192.168.2.10" ];
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINV6bI3hw06+1blj70g/avduJG14sowxHpbZA/D3Flql";
+    };
     "atelier" = {
       extraHostNames = [ "192.168.2.12" ];
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN0NpQiwhjJAVd6MwbH4pq6rKHq/qfJOh9Ibuu/Dmv+h";

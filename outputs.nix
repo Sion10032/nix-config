@@ -89,6 +89,7 @@ in {
   nixosConfigurations."atelier"   = mkNixos ./hosts/atelier;
   nixosConfigurations."akari"     = mkNixos ./hosts/akari;
   nixosConfigurations."ally"      = mkNixos ./hosts/ally;
+  nixosConfigurations."island"    = mkNixos ./hosts/island;
   nixosConfigurations."mitou"     = mkNixos ./hosts/mitou;
   nixosConfigurations."nexus"     = mkNixos ./hosts/nexus;
   nixosConfigurations."nixos-wsl" = mkNixos ./hosts/nixos-wsl;
