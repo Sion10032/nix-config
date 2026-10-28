@@ -1,6 +1,7 @@
 OS := `uname -s`
 REBUILD_COMMAND := if OS == 'Darwin' { 'darwin-rebuild' } else { 'nixos-rebuild' }
 DEFAULT_SOPS_AGE_KEY_FILE := '/persist/private/age/key.txt'
+SSH_NO_HOSTKEY := "-o UserKnownHostsFile=/dev/null -o GlobalKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o LogLevel=ERROR"
 
 alias d := deploy
 
@@ -13,6 +14,9 @@ deploy host='' *flags:
 
 deploy-user host *flags:
     {{REBUILD_COMMAND}} switch --flake ~/nix-config#{{host}} --target-host sion@{{host}} --show-trace --elevate=sudo --ask-elevate-password {{flags}}
+
+ssh-new *args:
+    ssh {{SSH_NO_HOSTKEY}} {{args}}
 
 debug:
     nix repl .
