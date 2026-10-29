@@ -15,6 +15,16 @@
       security.sops.enable = false;
     })
     ({ ... }: {
+      home-manager.sharedModules = [
+        ({ pkgs, ... }: {
+          home.packages = with pkgs; [
+            qq
+            wechat-uos
+          ];
+        })
+      ];
+    })
+    ({ ... }: {
       services.xrdp.defaultWindowManager = "xfce4-session";
     })
   ];
