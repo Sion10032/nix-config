@@ -113,6 +113,26 @@
         "type": "github"
       }
     },
+    "kasmvnc": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793354825,
+        "narHash": "sha256-PgDQti4ZQGXtDsxvhJ+Wb/56SMM3aj/FSiq96WgeOGY=",
+        "owner": "Sion10032",
+        "repo": "kasmvnc-nix",
+        "rev": "8d67bc303590fd23d0b7a295feff3da94ff66520",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Sion10032",
+        "repo": "kasmvnc-nix",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -322,6 +342,7 @@
         "home-manager": "home-manager",
         "homebrew": "homebrew",
         "jovian": "jovian",
+        "kasmvnc": "kasmvnc",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixos-hardware": "nixos-hardware",

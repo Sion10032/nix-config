@@ -27,6 +27,16 @@
     ({ ... }: {
       services.xrdp.defaultWindowManager = "xfce4-session";
     })
+    ({ inputs, ... }: {
+      imports = [ inputs.kasmvnc.nixosModules.default ];
+      services.kasmvnc = {
+        enable = true;
+        user = "sion";
+        # passwordFile = "/run/secrets/kasmvnc-password";
+        windowManager = "dbus-run-session xfce4-session";
+        openFirewall = true;
+      };
+    })
   ];
 
   moduleNames = [
