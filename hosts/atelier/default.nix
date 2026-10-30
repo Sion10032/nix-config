@@ -16,7 +16,7 @@
       networking.firewall.allowedUDPPorts = builtins.genList (x: 5170 + x) 10;
     })
     ({ ... }: {
-      services.xrdp.defaultWindowManager = "xfce4-session";
+      services.xrdp.defaultWindowManager = "dbus-run-session xfce4-session";
     })
   ];
 

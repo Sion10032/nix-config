@@ -25,7 +25,7 @@
       ];
     })
     ({ ... }: {
-      services.xrdp.defaultWindowManager = "xfce4-session";
+      services.xrdp.defaultWindowManager = "dbus-run-session xfce4-session";
     })
     ({ inputs, ... }: {
       imports = [ inputs.kasmvnc.nixosModules.default ];
