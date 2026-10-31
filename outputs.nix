@@ -27,7 +27,7 @@
     extra = [
       ./modules/gui/browser/chromium.nix
       ./modules/gui/editor/vscode.nix
-      ./modules/gui/file/motrix-next.nix
+      ./modules/gui/file/rayburst.nix
       ./modules/gui/media/mpv.nix
       ./modules/gui/network/remote-desktop.nix
       ./modules/gui/terminal
