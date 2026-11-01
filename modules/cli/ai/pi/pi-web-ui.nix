@@ -3,7 +3,7 @@
 in {
   networking.firewall.allowedTCPPorts = [ port ];
   home-manager.sharedModules = [
-    inputs.pi-web-ui.homeManagerModules.default
+    inputs.pi-web-ui.homeManagerModules.pi-web-ui
     ({ ... }: {
       services.pi-web-ui = {
         enable = true;

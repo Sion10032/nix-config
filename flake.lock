@@ -322,11 +322,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792587207,
-        "narHash": "sha256-Uit6Hi1gd+qDnzAB0KDLq9wRGe9qxwPZPyCHEJjdo8w=",
+        "lastModified": 1793505492,
+        "narHash": "sha256-NnhI/oZMmnVFRfp56W4PGyyZrrzu3N1fHPu/Rl4i4ek=",
         "owner": "Sion10032",
         "repo": "pi-web-ui-nix",
-        "rev": "64e4f0603eea229125f5d50bafc0f5081cc290bf",
+        "rev": "f0f2c5e2bd0c7d1c56058996e3c2cd59728f9262",
         "type": "github"
       },
       "original": {

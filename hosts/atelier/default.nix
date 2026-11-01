@@ -22,7 +22,8 @@
 
   moduleNames = [
     "cli/ai"
-    "cli/ai/pi/pi-web-ui.nix"
+    # "cli/ai/pi/pi-web-ui.nix"
+    "cli/ai/pi/pi-web.nix"
 
     "gui/linux-desktop/xfce4.nix"
     "gui/linux-desktop/xrdp.nix"
