@@ -7,6 +7,11 @@
         settings = {
           pane_frames = false;
           default_shell = "fish";
+          default_layout = "compact";
+          plugins.compact-bar = {
+            _props.location = "zellij:compact-bar";
+            tooltip = "F1";
+          };
         };
       };
     })
