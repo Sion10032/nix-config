@@ -15,9 +15,7 @@
         "comics-proxy"
         "kikoeru-proxy"
         "lan-proxy"
-        "firefox"
-        "qq"
-        "wechat"
+        "island"
         "pi"
       ];
     in {
