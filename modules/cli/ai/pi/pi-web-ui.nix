@@ -9,11 +9,8 @@ in {
         enable = true;
         host = "0.0.0.0";
         inherit port;
-        # allowOrigins = [
-        #   "https://pi.i.kanakana.moe"
-        # ];
         allowHosts = [
-          "pi.i.kanakana.moe"
+          "pi.i.kanae.cc"
           "192.168.2.12"
           "localhost"
         ];
