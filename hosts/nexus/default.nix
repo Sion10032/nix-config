@@ -31,9 +31,9 @@
         enable = true;
         config = ''
           .:53 {
-              template IN ANY kanakana.moe {
-                  match "^(${domains})\.i\.kanakana\.moe\.$"
-                  answer "{{ .Name }} 60 IN CNAME nexus.hs.kanakana.moe"
+              template IN ANY kanae.cc {
+                  match "^(${domains})\.i\.kanae\.cc\.$"
+                  answer "{{ .Name }} 60 IN CNAME nexus.hs.kanae.cc"
                   fallthrough
               }
 
